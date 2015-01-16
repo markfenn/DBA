@@ -1,0 +1,1074 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="DBAProduction" Class="DBADataContext" Serialization="Unidirectional" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=ch-dbweb;Initial Catalog=DBAProduction;Persist Security Info=True;User ID=DBAProduction" SettingsObjectName="DowntownBoiseAssociation.Properties.Settings" SettingsPropertyName="DBADevConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.vw_BlockImagePoints" Member="vw_BlockImagePoints">
+    <Type Name="vw_BlockImagePoint">
+      <Column Name="ZoneId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="BlockNumber" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PointOrder" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="x" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="y" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AccountingDate" Member="AccountingDates">
+    <Type Name="AccountingDate">
+      <Column Name="year" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="month" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Zone" Member="Zones">
+    <Type Name="Zone">
+      <Column Name="Id" AutoSync="OnInsert" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="Zone_Block" Member="Blocks" ThisKey="Id" OtherKey="ZoneId" Type="Block" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AttributeValue" Member="AttributeValues">
+    <Type Name="AttributeValue">
+      <Column Name="AttributeId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Value" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="ObjectGuid" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="Attribute_AttributeValue" Member="Attribute" ThisKey="AttributeId" OtherKey="Id" Type="Attribute" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Block" Member="Blocks">
+    <Type Name="Block">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="BlockNumber" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ZoneId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CaptainName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CaptainPhone" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CaptainEmail" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Subdivision" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CityBlockNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LotFrom" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LotTo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Block_Building" Member="Buildings" ThisKey="Id" OtherKey="BlockId" Type="Building" />
+      <Association Name="Block_StreetBlock" Member="StreetBlocks" ThisKey="Id" OtherKey="BlockId" Type="StreetBlock" />
+      <Association Name="Block_vw_SubdivisionName" Member="vw_SubdivisionNames" ThisKey="Subdivision" OtherKey="SUBNM" Type="vw_SubdivisionName" />
+      <Association Name="Block_vw_BuildingsByBlock" Member="vw_BuildingsByBlocks" ThisKey="Id" OtherKey="BlockId" Type="vw_BuildingsByBlock" />
+      <Association Name="Zone_Block" Member="Zone" ThisKey="ZoneId" OtherKey="Id" Type="Zone" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Building" Member="Buildings">
+    <Type Name="Building">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="BlockId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ParcelNo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Floors" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="YearBuilt" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="YearRenovated" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RentableSqFt" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AverageRent" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="TotalSqFt" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UnbillableSqFt" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Guid" AutoSync="Never" Type="System.Guid" DbType="UniqueIdentifier" IsDbGenerated="true" CanBeNull="true" />
+      <Column Name="AddressId" Type="System.Int32" DbType="Int" CanBeNull="false" />
+      <Association Name="Building_Space" Member="Spaces" ThisKey="Id" OtherKey="BuildingId" Type="Space" />
+      <Association Name="Building_vw_ParcelNumberLookUp" Member="vw_ParcelNumberLookUps" ThisKey="ParcelNo" OtherKey="Parcel" Type="vw_ParcelNumberLookUp" />
+      <Association Name="Building_vw_TenantListingbyBuilding" Member="vw_TenantListingbyBuildings" ThisKey="Id" OtherKey="BuildingId" Type="vw_TenantListingbyBuilding" />
+      <Association Name="Block_Building" Member="Block" ThisKey="BlockId" OtherKey="Id" Type="Block" IsForeignKey="true" DeleteRule="CASCADE" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ImagePoints" Member="ImagePoints">
+    <Type Name="ImagePoint">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PointCategory" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="PointIdentifier" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PointOrder" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="x" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="y" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.InvoiceDetail" Member="InvoiceDetails">
+    <Type Name="InvoiceDetail">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="InvoiceId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RateCode" Type="System.String" DbType="NChar(4)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="Rate" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="RateFrequency" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Quantity" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Amount" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Association Name="Invoice_InvoiceDetail" Member="Invoice" ThisKey="InvoiceId" OtherKey="Id" Type="Invoice" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Payment" Member="Payments">
+    <Type Name="Payment">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Guid" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="LegalEntityId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="PaymentNumber" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Amount" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Association Name="LegalEntity_Payment" Member="LegalEntity" ThisKey="LegalEntityId" OtherKey="Id" Type="LegalEntity" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Space" Member="Spaces">
+    <Type Name="Space" Id="ID1">
+      <Column Name="Id" AutoSync="Never" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Guid" AutoSync="Never" Type="System.Guid" DbType="UniqueIdentifier" IsDbGenerated="true" CanBeNull="true" />
+      <Column Name="BuildingId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="AddressId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SqFt" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ParcelNo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="Space_SpaceOwner" Member="SpaceOwners" ThisKey="Id" OtherKey="SpaceId" Type="SpaceOwner" />
+      <Association Name="Space_SpaceTennant" Member="SpaceTennants" ThisKey="Id" OtherKey="SpaceId" Type="SpaceTennant" />
+      <Association Name="Building_Space" Member="Building" ThisKey="BuildingId" OtherKey="Id" Type="Building" IsForeignKey="true" />
+      <Association Name="Address_Space" Member="Address" ThisKey="AddressId" OtherKey="Id" Type="Address" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SpaceOwner" Member="SpaceOwners">
+    <Type Name="SpaceOwner">
+      <Column Name="Id" AutoSync="Never" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="SpaceId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="AsOfDate" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="LegalEntityId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Space_SpaceOwner" Member="Space" ThisKey="SpaceId" OtherKey="Id" Type="Space" IsForeignKey="true" />
+      <Association Name="LegalEntity_SpaceOwner" Member="LegalEntity" ThisKey="LegalEntityId" OtherKey="Id" Type="LegalEntity" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SpaceTennant" Member="SpaceTennants">
+    <Type Name="SpaceTennant">
+      <Column Name="Id" AutoSync="Never" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TenantId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SpaceId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="BillToLegalEntityId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="StartDate" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="EndDate" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Association Name="Space_SpaceTennant" Member="Space" ThisKey="SpaceId" OtherKey="Id" Type="Space" IsForeignKey="true" />
+      <Association Name="Tenant_SpaceTennant" Member="Tenant" ThisKey="TenantId" OtherKey="Id" Type="Tenant" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Street" Member="Streets">
+    <Type Name="Street">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="Street_StreetBlock" Member="StreetBlocks" ThisKey="Id" OtherKey="StreetId" Type="StreetBlock" />
+    </Type>
+  </Table>
+  <Table Name="dbo.StreetBlock" Member="StreetBlocks">
+    <Type Name="StreetBlock">
+      <Column Name="StreetId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="BlockId" AutoSync="Always" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Direction" Type="System.String" DbType="NVarChar(2) NOT NULL" CanBeNull="false" />
+      <Column Name="MinAddress" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MaxAddress" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Block_StreetBlock" Member="Block" ThisKey="BlockId" OtherKey="Id" Type="Block" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="Street_StreetBlock" Member="Street" ThisKey="StreetId" OtherKey="Id" Type="Street" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Tenant" Member="Tenants">
+    <Type Name="Tenant">
+      <Column Name="Id" AutoSync="Never" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Guid" AutoSync="Never" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PropertyId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LegalEntityId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DateOpened" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="DateClosed" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="DateUpdated" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="Votes" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IsAssessed" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="IsPublished" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="PublishedAddressId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(100) " CanBeNull="true" />
+      <Association Name="Tenant_SpaceTennant" Member="SpaceTennants" ThisKey="Id" OtherKey="TenantId" Type="SpaceTennant" />
+      <Association Name="Tenant_TenantCatClass" Member="TenantCatClasses" ThisKey="Id" OtherKey="TenantId" Type="TenantCatClass" />
+      <Association Name="Address_Tenant" Member="Address" ThisKey="PublishedAddressId" OtherKey="Id" Type="Address" IsForeignKey="true" />
+      <Association Name="LegalEntity_Tenant" Member="LegalEntity" ThisKey="LegalEntityId" OtherKey="Id" Type="LegalEntity" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[Transaction]" Member="Transactions">
+    <Type Name="Transaction">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Guid" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="LegalEntityId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PostingDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="AccountingDate" Storage="_LogicalDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ReferenceGuid" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="Amount" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Type" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Username" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="BatchId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="TransactionBatch_Transaction" Member="TransactionBatch" ThisKey="BatchId" OtherKey="Id" Type="TransactionBatch" IsForeignKey="true" />
+      <Association Name="LegalEntity_Transaction" Member="LegalEntity" ThisKey="LegalEntityId" OtherKey="Id" Type="LegalEntity" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TransactionBatch" Member="TransactionBatches">
+    <Type Name="TransactionBatch">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Username" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="TransactionBatch_Transaction" Member="Transactions" ThisKey="Id" OtherKey="BatchId" Type="Transaction" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vw_ClassCategories" Member="vw_ClassCategories">
+    <Type Name="vw_ClassCategory">
+      <Column Name="ClassId" Type="System.Int32" DbType="Int NOT NULL" IsReadOnly="true" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ClassName" Type="System.String" DbType="NVarChar(30)" IsReadOnly="true" CanBeNull="true" />
+      <Column Name="CategoryId" Type="System.Int32" DbType="Int NOT NULL" IsReadOnly="true" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CategoryName" Type="System.String" DbType="NVarChar(30)" IsReadOnly="true" CanBeNull="true" />
+      <Column Name="Assigned" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+    <UpdateFunction FunctionId="FunctionId1">
+      <Argument Parameter="classId" Member="ClassId" />
+      <Argument Parameter="categoryId" Member="CategoryId" />
+      <Argument Parameter="assigned" Member="Assigned" />
+    </UpdateFunction>
+  </Table>
+  <Table Name="dbo.ClassOtherView" Member="ClassOtherViews">
+    <Type Name="ClassOtherView">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ClassType" Type="System.String" DbType="NVarChar(4)" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="IsActive" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ParcelInformation" Member="ParcelInformations">
+    <Type Name="ParcelInformation">
+      <Column Name="prc_parcel_no" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="prc_updated" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="prc_subdiv" Type="System.String" DbType="VarChar(45)" CanBeNull="true" />
+      <Column Name="prc_lot" Type="System.String" DbType="VarChar(4)" CanBeNull="true" />
+      <Column Name="prc_block" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="prc_quarter" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="prc_section" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="prc_township" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="prc_township_sfx" Type="System.Char" DbType="VarChar(1)" CanBeNull="true" />
+      <Column Name="prc_range" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="prc_range_sfx" Type="System.Char" DbType="VarChar(1)" CanBeNull="true" />
+      <Column Name="prc_zoning" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="prc_size" Type="System.Decimal" DbType="Decimal(10,3)" CanBeNull="true" />
+      <Column Name="prc_acres" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="prc_land_use" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="prc_totlvalue" Type="System.Decimal" DbType="Decimal(9,0)" CanBeNull="true" />
+      <Column Name="prc_zip_code" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="prc_legal_desc" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="prc_taxdist" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
+      <Column Name="prc_gisx" Type="System.Decimal" DbType="Decimal(10,4)" CanBeNull="true" />
+      <Column Name="prc_gisy" Type="System.Decimal" DbType="Decimal(10,4)" CanBeNull="true" />
+      <Column Name="prc_compln_area" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="prc_legal1" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="prc_legal2" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="prc_legal3" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="prc_legal4" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="prc_legal5" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="prp_last_name" Type="System.String" DbType="VarChar(35)" CanBeNull="true" />
+      <Column Name="prp_address1" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="prp_address2" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="prp_city" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="prp_state" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="prp_post_code" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="prp_notes" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Address" Member="Addresses">
+    <Type Name="Address">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="StreetNumber" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="StreetDirection" Type="System.String" DbType="NVarChar(2)" CanBeNull="true" />
+      <Column Name="StreetName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="StreetSuffix" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="StreetSuite" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="City" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="State" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ZipCode" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Country" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="GISPropertyId" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="Address_Space" Member="Spaces" ThisKey="Id" OtherKey="AddressId" Type="Space" />
+      <Association Name="Address_Tenant" Member="Tenants" ThisKey="Id" OtherKey="PublishedAddressId" Type="Tenant" />
+      <Association Name="Address_LegalEntity" Member="LegalEntities" ThisKey="Id" OtherKey="MailingAddressId" Type="LegalEntity" />
+      <Association Name="Address_Contact" Member="Contacts" ThisKey="Id" OtherKey="AddressId" Type="Contact" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Attribute" Member="Attributes">
+    <Type Name="Attribute">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Category" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Type" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="AppliesTo" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="Attribute_AttributeValue" Member="AttributeValues" ThisKey="Id" OtherKey="AttributeId" Type="AttributeValue" />
+    </Type>
+  </Table>
+  <Table Name="dbo.LegalEntity" Member="LegalEntities">
+    <Type Name="LegalEntity">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Guid" AutoSync="Never" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="AccountNumber" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="MailingAddressId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Phone" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Association Name="LegalEntity_Payment" Member="Payments" ThisKey="Id" OtherKey="LegalEntityId" Type="Payment" />
+      <Association Name="LegalEntity_SpaceOwner" Member="SpaceOwners" ThisKey="Id" OtherKey="LegalEntityId" Type="SpaceOwner" />
+      <Association Name="LegalEntity_Tenant" Member="Tenants" ThisKey="Id" OtherKey="LegalEntityId" Type="Tenant" />
+      <Association Name="LegalEntity_Transaction" Member="Transactions" ThisKey="Id" OtherKey="LegalEntityId" Type="Transaction" />
+      <Association Name="LegalEntity_Invoice" Member="Invoices" ThisKey="Id" OtherKey="LegalEntityId" Type="Invoice" />
+      <Association Name="LegalEntity_Adjustment" Member="Adjustments" ThisKey="Id" OtherKey="LegalEntityId" Type="Adjustment" />
+      <Association Name="Address_LegalEntity" Member="Address" ThisKey="MailingAddressId" OtherKey="Id" Type="Address" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Contact" Member="Contacts">
+    <Type Name="Contact">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ObjectGuid" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Phone" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="AddressId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Address_Contact" Member="Address" ThisKey="AddressId" OtherKey="Id" Type="Address" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vw_AddressLookup" Member="vw_AddressLookups">
+    <Type Name="vw_AddressLookup">
+      <Column Name="AddressString" Type="System.String" DbType="NVarChar(72)" CanBeNull="true" />
+      <Column Name="AddressNumber" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Predir" Type="System.Char" DbType="NVarChar(1)" CanBeNull="true" />
+      <Column Name="StreetName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="StreetType" Type="System.String" DbType="NVarChar(4)" CanBeNull="true" />
+      <Column Name="AddressDescription" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="AddressID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="StreetID" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="Lot" Type="System.String" DbType="NVarChar(4)" CanBeNull="true" />
+      <Column Name="Block" Type="System.String" DbType="NVarChar(4)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vw_BaseParcelInformation" Member="vw_BaseParcelInformations">
+    <Type Name="vw_BaseParcelInformation">
+      <Column Name="Parcel" Type="System.String" DbType="NVarChar(11)" IsPrimaryKey="true" CanBeNull="true" />
+      <Column Name="PrimaryOwner" Type="System.String" DbType="NVarChar(55)" CanBeNull="true" />
+      <Column Name="PrimaryOwnerLastName" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+      <Column Name="SecondOwner" Type="System.String" DbType="NVarChar(55)" CanBeNull="true" />
+      <Column Name="OwnerAddressString" Type="System.String" DbType="NVarChar(123)" CanBeNull="true" />
+      <Column Name="PropertyAddressString" Type="System.String" DbType="NVarChar(141)" CanBeNull="true" />
+      <Column Name="ZONECODE" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="TOTALVALUE" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="HOMEEXEMPT" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Acres" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Association Name="vw_BaseParcelInformation_LookupParcelValue" Member="LookupParcelValues" ThisKey="Parcel" OtherKey="PMParcel" Type="LookupParcelValue" />
+      <Association Name="vw_BaseParcelInformation_LookupRelatedParcel" Member="LookupRelatedParcels" ThisKey="Parcel" OtherKey="RPParcelNu" Type="LookupRelatedParcel" />
+      <Association Name="vw_BaseParcelInformation_LookupResidentialParcelInfo" Member="LookupResidentialParcelInfos" ThisKey="Parcel" OtherKey="PARCEL" Type="LookupResidentialParcelInfo" />
+      <Association Name="vw_BaseParcelInformation_LookupCommercialParcelInfo" Member="LookupCommercialParcelInfos" ThisKey="Parcel" OtherKey="PARCEL" Type="LookupCommercialParcelInfo" />
+    </Type>
+  </Table>
+  <Table Name="dbo.LookupParcelValue" Member="LookupParcelValues">
+    <Type Name="LookupParcelValue">
+      <Column Name="PMYear" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="PMParcel" Type="System.String" DbType="NVarChar(11)" CanBeNull="true" />
+      <Column Name="CVAssessed" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="CVActiveIn" Type="System.Char" DbType="NVarChar(1)" CanBeNull="true" />
+      <Column Name="SCCDescrip" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CVStateCat" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="CVAcreage" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Association Name="vw_BaseParcelInformation_LookupParcelValue" Member="vw_BaseParcelInformation" ThisKey="PMParcel" OtherKey="Parcel" Type="vw_BaseParcelInformation" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.LookupRelatedParcels" Member="LookupRelatedParcels">
+    <Type Name="LookupRelatedParcel">
+      <Column Name="RPParcelNu" Type="System.String" DbType="NVarChar(11)" CanBeNull="true" />
+      <Column Name="RPReferenc" Type="System.String" DbType="NVarChar(11)" CanBeNull="true" />
+      <Column Name="RPType" Type="System.Char" DbType="NVarChar(1)" CanBeNull="true" />
+      <Column Name="RPComment" Type="System.String" DbType="NVarChar(60)" CanBeNull="true" />
+      <Association Name="vw_BaseParcelInformation_LookupRelatedParcel" Member="vw_BaseParcelInformation" ThisKey="RPParcelNu" OtherKey="Parcel" Type="vw_BaseParcelInformation" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.LookupResidentialParcelInfo" Member="LookupResidentialParcelInfos">
+    <Type Name="LookupResidentialParcelInfo">
+      <Column Name="PARCEL" Type="System.String" DbType="NVarChar(11)" CanBeNull="true" />
+      <Column Name="OCCDATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="NOOFDWELLI" Type="System.Char" DbType="NVarChar(1)" CanBeNull="true" />
+      <Column Name="YEARBUILT" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="YEARREM" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="EFFAGE" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="BEDROOMS" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="BATHROOMS" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="CONSTCLASS" Type="System.Char" DbType="NVarChar(1)" CanBeNull="true" />
+      <Column Name="FIREPLACE" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="HEATING" Type="System.Char" DbType="NVarChar(1)" CanBeNull="true" />
+      <Column Name="AC" Type="System.Char" DbType="NVarChar(1)" CanBeNull="true" />
+      <Column Name="CARSTORAGE" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="CARSTOR2" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="GPBUILDING" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="PORCHSQFT" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="DECKSQFT" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="DECKCOVERE" Type="System.Char" DbType="NVarChar(1)" CanBeNull="true" />
+      <Column Name="PATIOSQFT" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="PATIOCOVER" Type="System.Char" DbType="NVarChar(1)" CanBeNull="true" />
+      <Column Name="POOLSQFT" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="GRFLSQFT" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="UPFLSQFT" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="LWRFLSQFTU" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="LWRFLSQFTF" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="BSMTFLSQFU" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="BSMTFLSQFF" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ATTICSQFTU" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ATTICSQFTF" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Association Name="vw_BaseParcelInformation_LookupResidentialParcelInfo" Member="vw_BaseParcelInformation" ThisKey="PARCEL" OtherKey="Parcel" Type="vw_BaseParcelInformation" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.LookupCommercialParcelInfo" Member="LookupCommercialParcelInfos">
+    <Type Name="LookupCommercialParcelInfo">
+      <Column Name="PARCEL" Type="System.String" DbType="NVarChar(11)" CanBeNull="true" />
+      <Column Name="REYR" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="[GROUP]" Member="GROUP" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="TYPE" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="COMCATCODE" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="PERCENTOWN" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="YRBLT" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="REMYEAR" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="OCCUPANCYD" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="BUSNAME" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="STORIES" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="UNITS" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="LEASABLESQ" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="GRFLSQFT" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="TOTALSQFT" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="EXCESSLAND" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="USEDLANDAC" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="USEDLANDSQ" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="EXCESLNDAC" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="TOTALLANDA" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="TOTALLANDS" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="METHOD" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Association Name="vw_BaseParcelInformation_LookupCommercialParcelInfo" Member="vw_BaseParcelInformation" ThisKey="PARCEL" OtherKey="Parcel" Type="vw_BaseParcelInformation" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vw_Tenant_to_Zone_Lookup" Member="vw_Tenant_to_Zone_Lookups">
+    <Type Name="vw_Tenant_to_Zone_Lookup">
+      <Column Name="SPACEID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="BUILDINGNAME" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="BLOCKNAME" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ZONENAME" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="TENANTID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ZoneId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="BlockId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="BuildingId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vw_SubdivisionName" Member="vw_SubdivisionNames">
+    <Type Name="vw_SubdivisionName">
+      <Column Name="SUBNM" Type="System.String" DbType="NVarChar(40)" CanBeNull="true" />
+      <Association Name="Block_vw_SubdivisionName" Member="Block" ThisKey="SUBNM" OtherKey="Subdivision" Type="Block" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vw_ParcelNumberLookUp" Member="vw_ParcelNumberLookUps">
+    <Type Name="vw_ParcelNumberLookUp">
+      <Column Name="Parcel" Type="System.String" DbType="NVarChar(11)" CanBeNull="true" />
+      <Column Name="ParcelInfo" Type="System.String" DbType="NVarChar(262)" CanBeNull="true" />
+      <Association Name="Building_vw_ParcelNumberLookUp" Member="Building" ThisKey="Parcel" OtherKey="ParcelNo" Type="Building" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Comment" Member="Comments">
+    <Type Name="Comment">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ObjectGuid" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Subject" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="Details" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="UserID" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vw_BuildingsByBlock" Member="vw_BuildingsByBlocks">
+    <Type Name="vw_BuildingsByBlock">
+      <Column Name="BlockId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BuildingId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="BuildingName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="BlockNumber" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Block_vw_BuildingsByBlock" Member="Block" ThisKey="BlockId" OtherKey="Id" Type="Block" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vw_TenantListingbyBuilding" Member="vw_TenantListingbyBuildings">
+    <Type Name="vw_TenantListingbyBuilding">
+      <Column Name="BuildingId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TenantId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="BuildingName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="DateOpened" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="DateClosed" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="DateUpdated" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="Votes" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IsAssessed" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="IsPublished" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="Building_vw_TenantListingbyBuilding" Member="Building" ThisKey="BuildingId" OtherKey="Id" Type="Building" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Class" Member="Classes">
+    <Type Name="Class">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ClassType" Type="System.String" DbType="NVarChar(4)" CanBeNull="true" />
+      <Column Name="IsActive" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Association Name="Class_CatClass" Member="CatClasses" ThisKey="Id" OtherKey="ClassId" Type="CatClass" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Categories" Member="Categories">
+    <Type Name="Category">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CatType" Type="System.String" DbType="NVarChar(4)" CanBeNull="true" />
+      <Column Name="IsActive" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Association Name="Category_CatClass" Member="CatClasses" ThisKey="Id" OtherKey="CategoryId" Type="CatClass" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CatClass" Member="CatClasses">
+    <Type Name="CatClass">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ClassId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CategoryId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="CatClass_TenantCatClass" Member="TenantCatClasses" ThisKey="Id" OtherKey="CatClassId" Type="TenantCatClass" />
+      <Association Name="Category_CatClass" Member="Category" ThisKey="CategoryId" OtherKey="Id" Type="Category" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="Class_CatClass" Member="Class" ThisKey="ClassId" OtherKey="Id" Type="Class" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TenantCatClass" Member="TenantCatClasses">
+    <Type Name="TenantCatClass">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TenantId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CatClassId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="CatClass_TenantCatClass" Member="CatClass" ThisKey="CatClassId" OtherKey="Id" Type="CatClass" IsForeignKey="true" />
+      <Association Name="Tenant_TenantCatClass" Member="Tenant" ThisKey="TenantId" OtherKey="Id" Type="Tenant" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vw_ContactingInformationByBlockId" Member="vw_ContactingInformationByBlockIds">
+    <Type Name="vw_ContactingInformationByBlockId">
+      <Column Name="Name" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Phone" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="AddressId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BlockId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="itemType" Type="System.String" DbType="VarChar(12) NOT NULL" CanBeNull="false" />
+      <Column Name="FullAddress" Type="System.String" DbType="NVarChar(418)" CanBeNull="true" />
+      <Column Name="SpaceId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vw_TenantContactsByBlockId" Member="vw_TenantContactsByBlockIds">
+    <Type Name="vw_TenantContactsByBlockId">
+      <Column Name="ContactName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Phone" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="BuildingName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="TenantGuid" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="TenantSpaceId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TenantId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SpaceId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="LegalEntityId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="BillToLegalEntityId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="AddressId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BlockId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BuildingId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vw_Space" Member="vw_Spaces">
+    <Type Name="vw_Space">
+      <Column Name="BuildingId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="BuildingName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="SpaceId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SpaceName" Type="System.String" DbType="NVarChar(206)" CanBeNull="true" />
+      <Column Name="TenantId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TenantName" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vw_ClosedAccountsException" Member="vw_ClosedAccountsExceptions">
+    <Type Name="vw_ClosedAccountsException">
+      <Column Name="AccountNumber" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="MailingAddressId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ServiceAddress" Type="System.String" DbType="NVarChar(206)" CanBeNull="true" />
+      <Column Name="BillToName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="DateOpened" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="DateClosed" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="Votes" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DateUpdated" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="IsAssessed" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="IsPublished" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="PublishedAddressId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BalanceAmount" Type="System.String" DbType="VarChar(4) NOT NULL" CanBeNull="false" />
+      <Column Name="BalanceAsOf" Type="System.String" DbType="VarChar(4) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vw_ActiveAssessedMemberCountByBusinessClassAndCategory" Member="vw_ActiveAssessedMemberCountByBusinessClassAndCategories">
+    <Type Name="vw_ActiveAssessedMemberCountByBusinessClassAndCategory">
+      <Column Name="ClassName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="CategoryName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ClassTotalCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CategoryTotalCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vw_ActiveAssessedMemberCountByBusinessClassSummary" Member="vw_ActiveAssessedMemberCountByBusinessClassSummaries">
+    <Type Name="vw_ActiveAssessedMemberCountByBusinessClassSummary">
+      <Column Name="ClassName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="UniqueClassCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vw_ActiveAssessedMemberByBusinessClassAndCategory" Member="vw_ActiveAssessedMemberByBusinessClassAndCategories">
+    <Type Name="vw_ActiveAssessedMemberByBusinessClassAndCategory">
+      <Column Name="AccountNumber" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="TenantId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TenantCatClassId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ClassName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CategoryName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Count" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vw_AssessedOpenClosedAccounts" Member="vw_AssessedOpenClosedAccounts">
+    <Type Name="vw_AssessedOpenClosedAccount">
+      <Column Name="AccountNumber" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="TenantId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="TenantCatClassId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ClassName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CategoryName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="DateOpened" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="DateClosed" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="FullAddress" Type="System.String" DbType="NVarChar(418)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vw_DetailofBuilding_Report" Member="vw_DetailofBuilding_Reports">
+    <Type Name="vw_DetailofBuilding_Report">
+      <Column Name="BuildingId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TenantId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BuildingName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="LegalEntName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="[Tenant.DateOpened]" Member="Tenant_DateOpened" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="TenantDateClosed" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="TenantDateUpdated" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="TenantVotes" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TenantIsAssessed" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="TenantIsPublished" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="BuildingParcelNmbr" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="BuildingFloors" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BuildingYearBuilt" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BuildingYearRenovated" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BuildingRentableSqFt" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BuildingAverageRent" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="BuildingTotalSqrFt" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BuildingUnbillableSqFt" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SpaceSqrtFeet" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SpaceParcelNo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SpaceTenStartDate" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="SpaceTenEndDate" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="LegalEntityAccountNumber" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="LegalEntityPhone" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="LegalEntityEmail" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="CountyResOccDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CountyResYrBlt" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="CountyResYrRem" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="CountyResGrflSqFt" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="CountyResUpFlSqFt" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="CountyResLwRflSqFtU" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="CountyResLwrFlSqFtf" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="CountyResBsmtFlSqFu" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="BSMTFLSQFF" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ATTICSQFTU" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ATTICSQFTF" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="CountyComYrBlt" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="CountyComYrRem" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="CountyComBusName" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="CountyComStories" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="CountyComUnits" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="CountyComLeasableSq" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="CountyComGrFlSqFt" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="CountyComTotalSqFt" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="BldAddressStreetNuimber" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="BldAddressStreetDirection" Type="System.String" DbType="NVarChar(2)" CanBeNull="true" />
+      <Column Name="BldAddressStreetName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="BldAddressStreetSuffix" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="BldAddressStreetSuite" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="BldAddressState" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="BldAddressCity" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="BldAddressCountry" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="BldAddressZip" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="BldContactName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="BldContactDescription" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="BldAddPhone" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="BldAddEmail" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SpaceAddStreetNumber" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SpaceAddStreetDirection" Type="System.String" DbType="NVarChar(2)" CanBeNull="true" />
+      <Column Name="SpaceAddStreetName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SpaceAddStreetSuffix" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SpaceAddStreetSuite" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SpaceAddCity" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SpaceAddState" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SpaceAddZip" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SpaceAddCountry" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vw_BuildingInformation" Member="vw_BuildingInformations">
+    <Type Name="vw_BuildingInformation">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="BlockId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ParcelNo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Floors" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="YearBuilt" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="YearRenovated" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RentableSqFt" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AverageRent" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="TotalSqFt" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UnbillableSqFt" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Guid" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="AddressId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vw_Zone" Member="vw_Zones">
+    <Type Name="vw_Zone">
+      <Column Name="Id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vw_BuildingNamePickList" Member="vw_BuildingNamePickLists">
+    <Type Name="vw_BuildingNamePickList">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vw_TenantBillingAddressandVotingInfo" Member="vw_TenantBillingAddressandVotingInfos">
+    <Type Name="vw_TenantBillingAddressandVotingInfo">
+      <Column Name="DateOpened" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="DateClosed" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="TenantName" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Votes" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BillToName" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="BilltoAccountNumber" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="BilltoPhone" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="BilltoEmail" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="BilltoStreetNumber" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="BilltoStreetDirection" Type="System.String" DbType="NVarChar(2)" CanBeNull="true" />
+      <Column Name="BilltoStreetName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="BilltoStreetSuffix" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="BilltoStreetSuite" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="BilltoCity" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="BilltoState" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="BilltoCountry" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="BilltoZipCode" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Invoice" Member="Invoices">
+    <Type Name="Invoice">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Guid" AutoSync="Never" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="LegalEntityId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="BeginDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EndDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Amount" Type="System.Decimal" DbType="Money" IsDbGenerated="true" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="Invoice_InvoiceDetail" Member="InvoiceDetails" ThisKey="Id" OtherKey="InvoiceId" Type="InvoiceDetail" />
+      <Association Name="LegalEntity_Invoice" Member="LegalEntity" ThisKey="LegalEntityId" OtherKey="Id" Type="LegalEntity" IsForeignKey="true" />
+    </Type>
+    <InsertFunction FunctionId="FunctionId2">
+      <Argument Parameter="legalEntityId" Member="LegalEntityId" />
+      <Argument Parameter="beginDate" Member="BeginDate" />
+      <Argument Parameter="endDate" Member="EndDate" />
+      <Argument Parameter="id" Member="Id" />
+      <Argument Parameter="guid" Member="Guid" />
+      <Argument Parameter="amount" Member="Amount" />
+    </InsertFunction>
+  </Table>
+  <Table Name="dbo.vw_UnpostedInvoice" Member="vw_UnpostedInvoices">
+    <Type Name="vw_UnpostedInvoice">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Guid" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="LegalEntityId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="BeginDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EndDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Amount" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vw_TenantVerification_MemberInventory" Member="vw_TenantVerification_MemberInventories">
+    <Type Name="vw_TenantVerification_MemberInventory">
+      <Column Name="StreetSuite" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="BusinessName" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="BusinessAddress" Type="System.String" DbType="NVarChar(155)" CanBeNull="true" />
+      <Column Name="Phone" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="AccountNumber" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="BusinessContacts" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="SqFt" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BuildingName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="BuildingID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BuildingAddress" Type="System.String" DbType="NVarChar(155)" CanBeNull="true" />
+      <Column Name="TenantGuid" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.RateMaster" Member="RateMasters">
+    <Type Name="RateMaster" Id="ID2">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="AsOfDate" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="RateCode" Type="System.String" DbType="NVarChar(4) NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Rate" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="RateFrequency" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="EntityType" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="ZoneId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="XML" Type="System.Xml.Linq.XElement" DbType="Xml" CanBeNull="true" UpdateCheck="Never" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Adjustment" Member="Adjustments">
+    <Type Name="Adjustment">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Guid" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="LegalEntityId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Amount" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="Note" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Association Name="LegalEntity_Adjustment" Member="LegalEntity" ThisKey="LegalEntityId" OtherKey="Id" Type="LegalEntity" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vw_Search_New" Member="vw_Search_News">
+    <Type Name="vw_Search_New">
+      <Column Name="NAME" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TYPE" Type="System.String" DbType="VarChar(11) NOT NULL" CanBeNull="false" />
+      <Column Name="ACCOUNT" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ContactType" Member="ContactTypes">
+    <Type Name="ContactType">
+      <Column Name="ContactType" Member="ContactType1" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Function Name="dbo.sp_ImagePoints_DeleteCategory" Method="sp_ImagePoints_DeleteCategory">
+    <Parameter Name="Category" Parameter="category" Type="System.String" DbType="VarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Id="FunctionId1" Name="dbo.spUpdateClassCategory" Method="spUpdateClassCategory">
+    <Parameter Name="ClassId" Parameter="classId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="CategoryId" Parameter="categoryId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Assigned" Parameter="assigned" Type="System.Boolean" DbType="Bit" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.fn_GetObjectAttributes" Method="fn_GetObjectAttributes" IsComposable="true">
+    <Parameter Name="ObjectGuid" Parameter="objectGuid" Type="System.Guid" DbType="UniqueIdentifier" />
+    <ElementType Name="fn_GetObjectAttributesResult">
+      <Column Name="Id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Category" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Type" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Value" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.insUpdObjectAttributeValue" Method="insUpdObjectAttributeValue">
+    <Parameter Name="ObjectGuid" Parameter="objectGuid" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="Id" Parameter="id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Value" Parameter="value" Type="System.String" DbType="NVarChar(MAX)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.delRateMaster" Method="delRateMaster">
+    <Parameter Name="AsOfDate" Parameter="asOfDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="RateCode" Parameter="rateCode" Type="System.String" DbType="NVarChar(4)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.fn_GetLegalEntitySpaces" Method="fn_GetLegalEntitySpaces" IsComposable="true">
+    <Parameter Name="LegalEntityId" Parameter="legalEntityId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Year" Parameter="year" Type="System.Int32" DbType="Int" />
+    <ElementType IdRef="ID1" />
+  </Function>
+  <Function Name="dbo.ContactsBlockNumber" Method="ContactsBlockNumber" IsComposable="true">
+    <Parameter Name="thisObjectGuid" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.InsUpdRateMaster" Method="InsUpdRateMaster">
+    <Parameter Name="AsOfDate" Parameter="asOfDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="RateCode" Parameter="rateCode" Type="System.String" DbType="NVarChar(4)" />
+    <Parameter Name="Description" Parameter="description" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="Rate" Parameter="rate" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="RateFrequency" Parameter="rateFrequency" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="ZoneId" Parameter="zoneId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="XML" Parameter="xML" Type="System.Xml.Linq.XElement" DbType="Xml" />
+    <Parameter Name="IsVacant" Parameter="isVacant" Type="System.Boolean" DbType="Bit" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.sp_DetailofBuilding_Report" Method="sp_DetailofBuilding_Report">
+    <ElementType Name="sp_DetailofBuilding_ReportResult">
+      <Column Name="BuildingId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TenantId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BuildingName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="LegalEntName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="[Tenant.DateOpened]" Member="Tenant_DateOpened" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="TenantDateClosed" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="TenantDateUpdated" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="TenantVotes" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TenantIsAssessed" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="TenantIsPublished" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="BuildingParcelNmbr" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="BuildingFloors" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="BuildingYearBuilt" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="BuildingYearRenovated" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="BuildingRentableSqFt" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="BuildingAverageRent" Type="System.Decimal" DbType="Decimal(0,0) NOT NULL" CanBeNull="false" />
+      <Column Name="BuildingTotalSqrFt" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="BuildingUnbillableSqFt" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SpaceSqrtFeet" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SpaceParcelNo" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="SpaceTenStartDate" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="SpaceTenEndDate" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="LegalEntityAccountNumber" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="LegalEntityPhone" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="LegalEntityEmail" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="CountyResOccDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CountyResYrBlt" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="CountyResYrRem" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="CountyResGrflSqFt" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="CountyResUpFlSqFt" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="CountyResLwRflSqFtU" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="CountyResLwrFlSqFtf" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="CountyResBsmtFlSqFu" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="BSMTFLSQFF" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="ATTICSQFTU" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="ATTICSQFTF" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="CountyComYrBlt" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="CountyComYrRem" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="CountyComBusName" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="CountyComStories" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="CountyComUnits" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="CountyComLeasableSq" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="CountyComGrFlSqFt" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="CountyComTotalSqFt" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="BldAddressStreetNuimber" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="BldAddressStreetDirection" Type="System.String" DbType="NVarChar(2) NOT NULL" CanBeNull="false" />
+      <Column Name="BldAddressStreetName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="BldAddressStreetSuffix" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="BldAddressStreetSuite" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="BldAddressState" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="BldAddressCity" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="BldAddressCountry" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="BldAddressZip" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="BldContactName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="BldContactDescription" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="BldAddPhone" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="BldAddEmail" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="SpaceAddStreetNumber" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="SpaceAddStreetDirection" Type="System.String" DbType="NVarChar(2) NOT NULL" CanBeNull="false" />
+      <Column Name="SpaceAddStreetName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="SpaceAddStreetSuffix" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="SpaceAddStreetSuite" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="SpaceAddCity" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="SpaceAddState" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="SpaceAddZip" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="SpaceAddCountry" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.fn_GetAttributeValueByGuidAndAttribute_IdOrName" Method="fn_GetAttributeValueByGuidAndAttribute_IdOrName" IsComposable="true">
+    <Parameter Name="thisGuid" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="attribute" Type="System.String" DbType="NVarChar(50)" />
+    <Return Type="System.String" />
+  </Function>
+  <Function Name="dbo.sp_InsAdjustment" Method="sp_InsAdjustment">
+    <Parameter Name="AccountNumber" Parameter="accountNumber" Type="System.String" DbType="NVarChar(20)" />
+    <Parameter Name="Date" Parameter="date" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="Note" Parameter="note" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="Category" Parameter="category" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="User" Parameter="user" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="Amount" Parameter="amount" Type="System.Decimal" DbType="Money" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.sp_PostInvoiceTransactions" Method="sp_PostInvoiceTransactions">
+    <Parameter Name="UserName" Parameter="userName" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="BatchDate" Parameter="batchDate" Type="System.DateTime" DbType="DateTime" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.fn_GetAccountingDate" Method="fn_GetAccountingDate" IsComposable="true">
+    <Parameter Name="Date" Parameter="date" Type="System.DateTime" DbType="DateTime" />
+    <Return Type="System.DateTime" />
+  </Function>
+  <Function Name="dbo.fn_GetAccountingPeriod" Method="fn_GetAccountingPeriod" IsComposable="true">
+    <Return Type="System.DateTime" />
+  </Function>
+  <Function Name="dbo.sp_SetAccountingPeriod" Method="sp_SetAccountingPeriod" AccessModifier="Private">
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.sp_CloseAccountingYear" Method="sp_CloseAccountingYear">
+    <Parameter Name="Username" Parameter="username" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="Year" Parameter="year" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.fn_GetRateMaster" Method="fn_GetRateMaster" IsComposable="true">
+    <Parameter Name="AsOfDate" Parameter="asOfDate" Type="System.DateTime" DbType="DateTime" />
+    <ElementType IdRef="ID2" />
+  </Function>
+  <Function Name="dbo.fn_GetSpaceLegalEntitiesSummary_1" Method="fn_GetSpaceLegalEntitiesSummary_1" IsComposable="true">
+    <Parameter Name="SpaceId" Parameter="spaceId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Year" Parameter="year" Type="System.Int32" DbType="Int" />
+    <ElementType Name="fn_GetSpaceLegalEntitiesSummary_1Result">
+      <Column Name="LegalEntityId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="EntityType" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="Days" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TotalDays" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Portion" Type="System.Double" DbType="Float" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetNewTenantNumber" Method="GetNewTenantNumber">
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Id="FunctionId2" Name="dbo.sp_insInvoice" Method="sp_insInvoice">
+    <Parameter Name="LegalEntityId" Parameter="legalEntityId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="BeginDate" Parameter="beginDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="EndDate" Parameter="endDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="Id" Parameter="id" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Parameter Name="Guid" Parameter="guid" Type="System.Guid" DbType="UniqueIdentifier" Direction="InOut" />
+    <Parameter Name="Amount" Parameter="amount" Type="System.Decimal" DbType="Money" Direction="InOut" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.fn_GetTenantSpaces" Method="fn_GetTenantSpaces" IsComposable="true">
+    <Parameter Name="TenantId" Parameter="tenantId" Type="System.Int32" DbType="Int" />
+    <ElementType Name="fn_GetTenantSpacesResult">
+      <Column Name="StartDate" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="SpaceId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SqFt" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BuildingId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="BuildingName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="AddressId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SpaceType" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Address" Type="System.String" DbType="NVarChar(206)" CanBeNull="true" />
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.fn_GetTenantActiveSpaces" Method="fn_GetTenantActiveSpaces" IsComposable="true">
+    <Parameter Name="TenantId" Parameter="tenantId" Type="System.Int32" DbType="Int" />
+    <ElementType Name="fn_GetTenantActiveSpacesResult">
+      <Column Name="StartDate" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="SpaceId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SqFt" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BuildingId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="BuildingName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="AddressId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Address" Type="System.String" DbType="NVarChar(206)" CanBeNull="true" />
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.fn_GetAccountStatement" Method="fn_GetAccountStatement" IsComposable="true">
+    <Parameter Name="Guid" Parameter="guid" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="StatementType" Parameter="statementType" Type="System.String" DbType="VarChar(1000)" />
+    <ElementType Name="fn_GetAccountStatementResult">
+      <Column Name="Id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PostingDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="AccountingDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Type" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ReferenceGuid" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="Amount" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="Balance" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_LateFees" Method="sp_LateFees">
+    <Parameter Name="Quarter" Parameter="quarter" Type="System.Int32" DbType="Int" />
+    <Parameter Name="PenaltyPercent" Parameter="penaltyPercent" Type="System.Decimal" DbType="Decimal(8,2)" />
+    <Parameter Name="Year" Parameter="year" Type="System.String" DbType="VarChar(4)" />
+    <ElementType Name="sp_LateFeesResult">
+      <Column Name="Name" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="LegalEntityId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AccountNumber" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="AmountOwed" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="QuarterlyAmount" Type="System.Decimal" DbType="Decimal(38,6)" CanBeNull="true" />
+      <Column Name="AmountPaid" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="QuaterlyOwed" Type="System.Decimal" DbType="Decimal(38,6)" CanBeNull="true" />
+      <Column Name="LateFee" Type="System.Decimal" DbType="Decimal(38,6)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+</Database>

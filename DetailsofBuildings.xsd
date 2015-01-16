@@ -1,0 +1,359 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DetailsofBuildings" targetNamespace="http://tempuri.org/DetailsofBuildings.xsd" xmlns:mstns="http://tempuri.org/DetailsofBuildings.xsd" xmlns="http://tempuri.org/DetailsofBuildings.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="DBADevConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="DBADevConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.DowntownBoiseAssociation.Properties.Settings.GlobalReference.Default.DBADevConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="vw_DetailofBuilding_ReportTableAdapter" GeneratorDataComponentClassName="vw_DetailofBuilding_ReportTableAdapter" Name="vw_DetailofBuilding_Report" UserDataComponentName="vw_DetailofBuilding_ReportTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="DBADevConnectionString (Settings)" DbObjectName="DBADev.dbo.vw_DetailofBuilding_Report" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT BuildingId, TenantId, BuildingName, LegalEntName, [Tenant.DateOpened], TenantDateClosed, TenantDateUpdated, TenantVotes, TenantIsAssessed, TenantIsPublished, BuildingParcelNmbr, BuildingFloors, BuildingYearBuilt, BuildingYearRenovated, BuildingRentableSqFt, BuildingAverageRent, BuildingTotalSqrFt, BuildingUnbillableSqFt, SpaceSqrtFeet, SpaceParcelNo, SpaceTenStartDate, SpaceTenEndDate, LegalEntityAccountNumber, LegalEntityPhone, LegalEntityEmail, CountyResOccDate, CountyResYrBlt, CountyResYrRem, CountyResGrflSqFt, CountyResUpFlSqFt, CountyResLwRflSqFtU, CountyResLwrFlSqFtf, CountyResBsmtFlSqFu, BSMTFLSQFF, ATTICSQFTU, ATTICSQFTF, CountyComYrBlt, CountyComYrRem, CountyComBusName, CountyComStories, CountyComUnits, CountyComLeasableSq, CountyComGrFlSqFt, CountyComTotalSqFt, BldAddressStreetNuimber, BldAddressStreetDirection, BldAddressStreetName, BldAddressStreetSuffix, BldAddressStreetSuite, BldAddressState, BldAddressCity, BldAddressCountry, BldAddressZip, BldContactName, BldContactDescription, BldAddPhone, BldAddEmail, SpaceAddStreetNumber, SpaceAddStreetDirection, SpaceAddStreetName, SpaceAddStreetSuffix, SpaceAddStreetSuite, SpaceAddCity, SpaceAddState, SpaceAddZip, SpaceAddCountry FROM dbo.vw_DetailofBuilding_Report</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="BuildingId" DataSetColumn="BuildingId" />
+              <Mapping SourceColumn="TenantId" DataSetColumn="TenantId" />
+              <Mapping SourceColumn="BuildingName" DataSetColumn="BuildingName" />
+              <Mapping SourceColumn="LegalEntName" DataSetColumn="LegalEntName" />
+              <Mapping SourceColumn="Tenant.DateOpened" DataSetColumn="Tenant_DateOpened" />
+              <Mapping SourceColumn="TenantDateClosed" DataSetColumn="TenantDateClosed" />
+              <Mapping SourceColumn="TenantDateUpdated" DataSetColumn="TenantDateUpdated" />
+              <Mapping SourceColumn="TenantVotes" DataSetColumn="TenantVotes" />
+              <Mapping SourceColumn="TenantIsAssessed" DataSetColumn="TenantIsAssessed" />
+              <Mapping SourceColumn="TenantIsPublished" DataSetColumn="TenantIsPublished" />
+              <Mapping SourceColumn="BuildingParcelNmbr" DataSetColumn="BuildingParcelNmbr" />
+              <Mapping SourceColumn="BuildingFloors" DataSetColumn="BuildingFloors" />
+              <Mapping SourceColumn="BuildingYearBuilt" DataSetColumn="BuildingYearBuilt" />
+              <Mapping SourceColumn="BuildingYearRenovated" DataSetColumn="BuildingYearRenovated" />
+              <Mapping SourceColumn="BuildingRentableSqFt" DataSetColumn="BuildingRentableSqFt" />
+              <Mapping SourceColumn="BuildingAverageRent" DataSetColumn="BuildingAverageRent" />
+              <Mapping SourceColumn="BuildingTotalSqrFt" DataSetColumn="BuildingTotalSqrFt" />
+              <Mapping SourceColumn="BuildingUnbillableSqFt" DataSetColumn="BuildingUnbillableSqFt" />
+              <Mapping SourceColumn="SpaceSqrtFeet" DataSetColumn="SpaceSqrtFeet" />
+              <Mapping SourceColumn="SpaceParcelNo" DataSetColumn="SpaceParcelNo" />
+              <Mapping SourceColumn="SpaceTenStartDate" DataSetColumn="SpaceTenStartDate" />
+              <Mapping SourceColumn="SpaceTenEndDate" DataSetColumn="SpaceTenEndDate" />
+              <Mapping SourceColumn="LegalEntityAccountNumber" DataSetColumn="LegalEntityAccountNumber" />
+              <Mapping SourceColumn="LegalEntityPhone" DataSetColumn="LegalEntityPhone" />
+              <Mapping SourceColumn="LegalEntityEmail" DataSetColumn="LegalEntityEmail" />
+              <Mapping SourceColumn="CountyResOccDate" DataSetColumn="CountyResOccDate" />
+              <Mapping SourceColumn="CountyResYrBlt" DataSetColumn="CountyResYrBlt" />
+              <Mapping SourceColumn="CountyResYrRem" DataSetColumn="CountyResYrRem" />
+              <Mapping SourceColumn="CountyResGrflSqFt" DataSetColumn="CountyResGrflSqFt" />
+              <Mapping SourceColumn="CountyResUpFlSqFt" DataSetColumn="CountyResUpFlSqFt" />
+              <Mapping SourceColumn="CountyResLwRflSqFtU" DataSetColumn="CountyResLwRflSqFtU" />
+              <Mapping SourceColumn="CountyResLwrFlSqFtf" DataSetColumn="CountyResLwrFlSqFtf" />
+              <Mapping SourceColumn="CountyResBsmtFlSqFu" DataSetColumn="CountyResBsmtFlSqFu" />
+              <Mapping SourceColumn="BSMTFLSQFF" DataSetColumn="BSMTFLSQFF" />
+              <Mapping SourceColumn="ATTICSQFTU" DataSetColumn="ATTICSQFTU" />
+              <Mapping SourceColumn="ATTICSQFTF" DataSetColumn="ATTICSQFTF" />
+              <Mapping SourceColumn="CountyComYrBlt" DataSetColumn="CountyComYrBlt" />
+              <Mapping SourceColumn="CountyComYrRem" DataSetColumn="CountyComYrRem" />
+              <Mapping SourceColumn="CountyComBusName" DataSetColumn="CountyComBusName" />
+              <Mapping SourceColumn="CountyComStories" DataSetColumn="CountyComStories" />
+              <Mapping SourceColumn="CountyComUnits" DataSetColumn="CountyComUnits" />
+              <Mapping SourceColumn="CountyComLeasableSq" DataSetColumn="CountyComLeasableSq" />
+              <Mapping SourceColumn="CountyComGrFlSqFt" DataSetColumn="CountyComGrFlSqFt" />
+              <Mapping SourceColumn="CountyComTotalSqFt" DataSetColumn="CountyComTotalSqFt" />
+              <Mapping SourceColumn="BldAddressStreetNuimber" DataSetColumn="BldAddressStreetNuimber" />
+              <Mapping SourceColumn="BldAddressStreetDirection" DataSetColumn="BldAddressStreetDirection" />
+              <Mapping SourceColumn="BldAddressStreetName" DataSetColumn="BldAddressStreetName" />
+              <Mapping SourceColumn="BldAddressStreetSuffix" DataSetColumn="BldAddressStreetSuffix" />
+              <Mapping SourceColumn="BldAddressStreetSuite" DataSetColumn="BldAddressStreetSuite" />
+              <Mapping SourceColumn="BldAddressState" DataSetColumn="BldAddressState" />
+              <Mapping SourceColumn="BldAddressCity" DataSetColumn="BldAddressCity" />
+              <Mapping SourceColumn="BldAddressCountry" DataSetColumn="BldAddressCountry" />
+              <Mapping SourceColumn="BldAddressZip" DataSetColumn="BldAddressZip" />
+              <Mapping SourceColumn="BldContactName" DataSetColumn="BldContactName" />
+              <Mapping SourceColumn="BldContactDescription" DataSetColumn="BldContactDescription" />
+              <Mapping SourceColumn="BldAddPhone" DataSetColumn="BldAddPhone" />
+              <Mapping SourceColumn="BldAddEmail" DataSetColumn="BldAddEmail" />
+              <Mapping SourceColumn="SpaceAddStreetNumber" DataSetColumn="SpaceAddStreetNumber" />
+              <Mapping SourceColumn="SpaceAddStreetDirection" DataSetColumn="SpaceAddStreetDirection" />
+              <Mapping SourceColumn="SpaceAddStreetName" DataSetColumn="SpaceAddStreetName" />
+              <Mapping SourceColumn="SpaceAddStreetSuffix" DataSetColumn="SpaceAddStreetSuffix" />
+              <Mapping SourceColumn="SpaceAddStreetSuite" DataSetColumn="SpaceAddStreetSuite" />
+              <Mapping SourceColumn="SpaceAddCity" DataSetColumn="SpaceAddCity" />
+              <Mapping SourceColumn="SpaceAddState" DataSetColumn="SpaceAddState" />
+              <Mapping SourceColumn="SpaceAddZip" DataSetColumn="SpaceAddZip" />
+              <Mapping SourceColumn="SpaceAddCountry" DataSetColumn="SpaceAddCountry" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DetailsofBuildings" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_DataSetName="DetailsofBuildings" msprop:Generator_UserDSName="DetailsofBuildings" msprop:EnableTableAdapterManager="True">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="vw_DetailofBuilding_Report" msprop:Generator_UserTableName="vw_DetailofBuilding_Report" msprop:Generator_RowDeletedName="vw_DetailofBuilding_ReportRowDeleted" msprop:Generator_TableClassName="vw_DetailofBuilding_ReportDataTable" msprop:Generator_RowChangedName="vw_DetailofBuilding_ReportRowChanged" msprop:Generator_RowClassName="vw_DetailofBuilding_ReportRow" msprop:Generator_RowChangingName="vw_DetailofBuilding_ReportRowChanging" msprop:Generator_RowEvArgName="vw_DetailofBuilding_ReportRowChangeEvent" msprop:Generator_RowEvHandlerName="vw_DetailofBuilding_ReportRowChangeEventHandler" msprop:Generator_TablePropName="vw_DetailofBuilding_Report" msprop:Generator_TableVarName="tablevw_DetailofBuilding_Report" msprop:Generator_RowDeletingName="vw_DetailofBuilding_ReportRowDeleting">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="BuildingId" msprop:Generator_UserColumnName="BuildingId" msprop:Generator_ColumnPropNameInRow="BuildingId" msprop:Generator_ColumnVarNameInTable="columnBuildingId" msprop:Generator_ColumnPropNameInTable="BuildingIdColumn" type="xs:int" />
+              <xs:element name="TenantId" msprop:Generator_UserColumnName="TenantId" msprop:Generator_ColumnPropNameInRow="TenantId" msprop:Generator_ColumnVarNameInTable="columnTenantId" msprop:Generator_ColumnPropNameInTable="TenantIdColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="BuildingName" msprop:Generator_UserColumnName="BuildingName" msprop:Generator_ColumnPropNameInRow="BuildingName" msprop:Generator_ColumnVarNameInTable="columnBuildingName" msprop:Generator_ColumnPropNameInTable="BuildingNameColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="LegalEntName" msprop:Generator_UserColumnName="LegalEntName" msprop:Generator_ColumnPropNameInRow="LegalEntName" msprop:Generator_ColumnVarNameInTable="columnLegalEntName" msprop:Generator_ColumnPropNameInTable="LegalEntNameColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Tenant_DateOpened" msprop:Generator_UserColumnName="Tenant_DateOpened" msprop:Generator_ColumnPropNameInRow="Tenant_DateOpened" msprop:Generator_ColumnVarNameInTable="columnTenant_DateOpened" msprop:Generator_ColumnPropNameInTable="Tenant_DateOpenedColumn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="TenantDateClosed" msprop:Generator_UserColumnName="TenantDateClosed" msprop:Generator_ColumnPropNameInRow="TenantDateClosed" msprop:Generator_ColumnVarNameInTable="columnTenantDateClosed" msprop:Generator_ColumnPropNameInTable="TenantDateClosedColumn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="TenantDateUpdated" msprop:Generator_UserColumnName="TenantDateUpdated" msprop:Generator_ColumnPropNameInRow="TenantDateUpdated" msprop:Generator_ColumnVarNameInTable="columnTenantDateUpdated" msprop:Generator_ColumnPropNameInTable="TenantDateUpdatedColumn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="TenantVotes" msprop:Generator_UserColumnName="TenantVotes" msprop:Generator_ColumnPropNameInRow="TenantVotes" msprop:Generator_ColumnVarNameInTable="columnTenantVotes" msprop:Generator_ColumnPropNameInTable="TenantVotesColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="TenantIsAssessed" msprop:Generator_UserColumnName="TenantIsAssessed" msprop:Generator_ColumnPropNameInRow="TenantIsAssessed" msprop:Generator_ColumnVarNameInTable="columnTenantIsAssessed" msprop:Generator_ColumnPropNameInTable="TenantIsAssessedColumn" type="xs:boolean" minOccurs="0" />
+              <xs:element name="TenantIsPublished" msprop:Generator_UserColumnName="TenantIsPublished" msprop:Generator_ColumnPropNameInRow="TenantIsPublished" msprop:Generator_ColumnVarNameInTable="columnTenantIsPublished" msprop:Generator_ColumnPropNameInTable="TenantIsPublishedColumn" type="xs:boolean" minOccurs="0" />
+              <xs:element name="BuildingParcelNmbr" msprop:Generator_UserColumnName="BuildingParcelNmbr" msprop:Generator_ColumnPropNameInRow="BuildingParcelNmbr" msprop:Generator_ColumnVarNameInTable="columnBuildingParcelNmbr" msprop:Generator_ColumnPropNameInTable="BuildingParcelNmbrColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="BuildingFloors" msprop:Generator_UserColumnName="BuildingFloors" msprop:Generator_ColumnPropNameInRow="BuildingFloors" msprop:Generator_ColumnVarNameInTable="columnBuildingFloors" msprop:Generator_ColumnPropNameInTable="BuildingFloorsColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="BuildingYearBuilt" msprop:Generator_UserColumnName="BuildingYearBuilt" msprop:Generator_ColumnPropNameInRow="BuildingYearBuilt" msprop:Generator_ColumnVarNameInTable="columnBuildingYearBuilt" msprop:Generator_ColumnPropNameInTable="BuildingYearBuiltColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="BuildingYearRenovated" msprop:Generator_UserColumnName="BuildingYearRenovated" msprop:Generator_ColumnPropNameInRow="BuildingYearRenovated" msprop:Generator_ColumnVarNameInTable="columnBuildingYearRenovated" msprop:Generator_ColumnPropNameInTable="BuildingYearRenovatedColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="BuildingRentableSqFt" msprop:Generator_UserColumnName="BuildingRentableSqFt" msprop:Generator_ColumnPropNameInRow="BuildingRentableSqFt" msprop:Generator_ColumnVarNameInTable="columnBuildingRentableSqFt" msprop:Generator_ColumnPropNameInTable="BuildingRentableSqFtColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="BuildingAverageRent" msprop:Generator_UserColumnName="BuildingAverageRent" msprop:Generator_ColumnPropNameInRow="BuildingAverageRent" msprop:Generator_ColumnVarNameInTable="columnBuildingAverageRent" msprop:Generator_ColumnPropNameInTable="BuildingAverageRentColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="BuildingTotalSqrFt" msprop:Generator_UserColumnName="BuildingTotalSqrFt" msprop:Generator_ColumnPropNameInRow="BuildingTotalSqrFt" msprop:Generator_ColumnVarNameInTable="columnBuildingTotalSqrFt" msprop:Generator_ColumnPropNameInTable="BuildingTotalSqrFtColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="BuildingUnbillableSqFt" msprop:Generator_UserColumnName="BuildingUnbillableSqFt" msprop:Generator_ColumnPropNameInRow="BuildingUnbillableSqFt" msprop:Generator_ColumnVarNameInTable="columnBuildingUnbillableSqFt" msprop:Generator_ColumnPropNameInTable="BuildingUnbillableSqFtColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="SpaceSqrtFeet" msprop:Generator_UserColumnName="SpaceSqrtFeet" msprop:Generator_ColumnPropNameInRow="SpaceSqrtFeet" msprop:Generator_ColumnVarNameInTable="columnSpaceSqrtFeet" msprop:Generator_ColumnPropNameInTable="SpaceSqrtFeetColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="SpaceParcelNo" msprop:Generator_UserColumnName="SpaceParcelNo" msprop:Generator_ColumnPropNameInRow="SpaceParcelNo" msprop:Generator_ColumnVarNameInTable="columnSpaceParcelNo" msprop:Generator_ColumnPropNameInTable="SpaceParcelNoColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SpaceTenStartDate" msprop:Generator_UserColumnName="SpaceTenStartDate" msprop:Generator_ColumnPropNameInRow="SpaceTenStartDate" msprop:Generator_ColumnVarNameInTable="columnSpaceTenStartDate" msprop:Generator_ColumnPropNameInTable="SpaceTenStartDateColumn" type="xs:dateTime" />
+              <xs:element name="SpaceTenEndDate" msprop:Generator_UserColumnName="SpaceTenEndDate" msprop:Generator_ColumnPropNameInRow="SpaceTenEndDate" msprop:Generator_ColumnVarNameInTable="columnSpaceTenEndDate" msprop:Generator_ColumnPropNameInTable="SpaceTenEndDateColumn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="LegalEntityAccountNumber" msprop:Generator_UserColumnName="LegalEntityAccountNumber" msprop:Generator_ColumnPropNameInRow="LegalEntityAccountNumber" msprop:Generator_ColumnVarNameInTable="columnLegalEntityAccountNumber" msprop:Generator_ColumnPropNameInTable="LegalEntityAccountNumberColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="LegalEntityPhone" msprop:Generator_UserColumnName="LegalEntityPhone" msprop:Generator_ColumnPropNameInRow="LegalEntityPhone" msprop:Generator_ColumnVarNameInTable="columnLegalEntityPhone" msprop:Generator_ColumnPropNameInTable="LegalEntityPhoneColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="LegalEntityEmail" msprop:Generator_UserColumnName="LegalEntityEmail" msprop:Generator_ColumnPropNameInRow="LegalEntityEmail" msprop:Generator_ColumnVarNameInTable="columnLegalEntityEmail" msprop:Generator_ColumnPropNameInTable="LegalEntityEmailColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="250" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CountyResOccDate" msprop:Generator_UserColumnName="CountyResOccDate" msprop:Generator_ColumnPropNameInRow="CountyResOccDate" msprop:Generator_ColumnVarNameInTable="columnCountyResOccDate" msprop:Generator_ColumnPropNameInTable="CountyResOccDateColumn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="CountyResYrBlt" msprop:Generator_UserColumnName="CountyResYrBlt" msprop:Generator_ColumnPropNameInRow="CountyResYrBlt" msprop:Generator_ColumnVarNameInTable="columnCountyResYrBlt" msprop:Generator_ColumnPropNameInTable="CountyResYrBltColumn" type="xs:double" minOccurs="0" />
+              <xs:element name="CountyResYrRem" msprop:Generator_UserColumnName="CountyResYrRem" msprop:Generator_ColumnPropNameInRow="CountyResYrRem" msprop:Generator_ColumnVarNameInTable="columnCountyResYrRem" msprop:Generator_ColumnPropNameInTable="CountyResYrRemColumn" type="xs:double" minOccurs="0" />
+              <xs:element name="CountyResGrflSqFt" msprop:Generator_UserColumnName="CountyResGrflSqFt" msprop:Generator_ColumnPropNameInRow="CountyResGrflSqFt" msprop:Generator_ColumnVarNameInTable="columnCountyResGrflSqFt" msprop:Generator_ColumnPropNameInTable="CountyResGrflSqFtColumn" type="xs:double" minOccurs="0" />
+              <xs:element name="CountyResUpFlSqFt" msprop:Generator_UserColumnName="CountyResUpFlSqFt" msprop:Generator_ColumnPropNameInRow="CountyResUpFlSqFt" msprop:Generator_ColumnVarNameInTable="columnCountyResUpFlSqFt" msprop:Generator_ColumnPropNameInTable="CountyResUpFlSqFtColumn" type="xs:double" minOccurs="0" />
+              <xs:element name="CountyResLwRflSqFtU" msprop:Generator_UserColumnName="CountyResLwRflSqFtU" msprop:Generator_ColumnPropNameInRow="CountyResLwRflSqFtU" msprop:Generator_ColumnVarNameInTable="columnCountyResLwRflSqFtU" msprop:Generator_ColumnPropNameInTable="CountyResLwRflSqFtUColumn" type="xs:double" minOccurs="0" />
+              <xs:element name="CountyResLwrFlSqFtf" msprop:Generator_UserColumnName="CountyResLwrFlSqFtf" msprop:Generator_ColumnPropNameInRow="CountyResLwrFlSqFtf" msprop:Generator_ColumnVarNameInTable="columnCountyResLwrFlSqFtf" msprop:Generator_ColumnPropNameInTable="CountyResLwrFlSqFtfColumn" type="xs:double" minOccurs="0" />
+              <xs:element name="CountyResBsmtFlSqFu" msprop:Generator_UserColumnName="CountyResBsmtFlSqFu" msprop:Generator_ColumnPropNameInRow="CountyResBsmtFlSqFu" msprop:Generator_ColumnVarNameInTable="columnCountyResBsmtFlSqFu" msprop:Generator_ColumnPropNameInTable="CountyResBsmtFlSqFuColumn" type="xs:double" minOccurs="0" />
+              <xs:element name="BSMTFLSQFF" msprop:Generator_UserColumnName="BSMTFLSQFF" msprop:Generator_ColumnPropNameInRow="BSMTFLSQFF" msprop:Generator_ColumnVarNameInTable="columnBSMTFLSQFF" msprop:Generator_ColumnPropNameInTable="BSMTFLSQFFColumn" type="xs:double" minOccurs="0" />
+              <xs:element name="ATTICSQFTU" msprop:Generator_UserColumnName="ATTICSQFTU" msprop:Generator_ColumnPropNameInRow="ATTICSQFTU" msprop:Generator_ColumnVarNameInTable="columnATTICSQFTU" msprop:Generator_ColumnPropNameInTable="ATTICSQFTUColumn" type="xs:double" minOccurs="0" />
+              <xs:element name="ATTICSQFTF" msprop:Generator_UserColumnName="ATTICSQFTF" msprop:Generator_ColumnPropNameInRow="ATTICSQFTF" msprop:Generator_ColumnVarNameInTable="columnATTICSQFTF" msprop:Generator_ColumnPropNameInTable="ATTICSQFTFColumn" type="xs:double" minOccurs="0" />
+              <xs:element name="CountyComYrBlt" msprop:Generator_UserColumnName="CountyComYrBlt" msprop:Generator_ColumnPropNameInRow="CountyComYrBlt" msprop:Generator_ColumnVarNameInTable="columnCountyComYrBlt" msprop:Generator_ColumnPropNameInTable="CountyComYrBltColumn" type="xs:double" minOccurs="0" />
+              <xs:element name="CountyComYrRem" msprop:Generator_UserColumnName="CountyComYrRem" msprop:Generator_ColumnPropNameInRow="CountyComYrRem" msprop:Generator_ColumnVarNameInTable="columnCountyComYrRem" msprop:Generator_ColumnPropNameInTable="CountyComYrRemColumn" type="xs:double" minOccurs="0" />
+              <xs:element name="CountyComBusName" msprop:Generator_UserColumnName="CountyComBusName" msprop:Generator_ColumnPropNameInRow="CountyComBusName" msprop:Generator_ColumnVarNameInTable="columnCountyComBusName" msprop:Generator_ColumnPropNameInTable="CountyComBusNameColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CountyComStories" msprop:Generator_UserColumnName="CountyComStories" msprop:Generator_ColumnPropNameInRow="CountyComStories" msprop:Generator_ColumnVarNameInTable="columnCountyComStories" msprop:Generator_ColumnPropNameInTable="CountyComStoriesColumn" type="xs:double" minOccurs="0" />
+              <xs:element name="CountyComUnits" msprop:Generator_UserColumnName="CountyComUnits" msprop:Generator_ColumnPropNameInRow="CountyComUnits" msprop:Generator_ColumnVarNameInTable="columnCountyComUnits" msprop:Generator_ColumnPropNameInTable="CountyComUnitsColumn" type="xs:double" minOccurs="0" />
+              <xs:element name="CountyComLeasableSq" msprop:Generator_UserColumnName="CountyComLeasableSq" msprop:Generator_ColumnPropNameInRow="CountyComLeasableSq" msprop:Generator_ColumnVarNameInTable="columnCountyComLeasableSq" msprop:Generator_ColumnPropNameInTable="CountyComLeasableSqColumn" type="xs:double" minOccurs="0" />
+              <xs:element name="CountyComGrFlSqFt" msprop:Generator_UserColumnName="CountyComGrFlSqFt" msprop:Generator_ColumnPropNameInRow="CountyComGrFlSqFt" msprop:Generator_ColumnVarNameInTable="columnCountyComGrFlSqFt" msprop:Generator_ColumnPropNameInTable="CountyComGrFlSqFtColumn" type="xs:double" minOccurs="0" />
+              <xs:element name="CountyComTotalSqFt" msprop:Generator_UserColumnName="CountyComTotalSqFt" msprop:Generator_ColumnPropNameInRow="CountyComTotalSqFt" msprop:Generator_ColumnVarNameInTable="columnCountyComTotalSqFt" msprop:Generator_ColumnPropNameInTable="CountyComTotalSqFtColumn" type="xs:double" minOccurs="0" />
+              <xs:element name="BldAddressStreetNuimber" msprop:Generator_UserColumnName="BldAddressStreetNuimber" msprop:Generator_ColumnPropNameInRow="BldAddressStreetNuimber" msprop:Generator_ColumnVarNameInTable="columnBldAddressStreetNuimber" msprop:Generator_ColumnPropNameInTable="BldAddressStreetNuimberColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="BldAddressStreetDirection" msprop:Generator_UserColumnName="BldAddressStreetDirection" msprop:Generator_ColumnPropNameInRow="BldAddressStreetDirection" msprop:Generator_ColumnVarNameInTable="columnBldAddressStreetDirection" msprop:Generator_ColumnPropNameInTable="BldAddressStreetDirectionColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="BldAddressStreetName" msprop:Generator_UserColumnName="BldAddressStreetName" msprop:Generator_ColumnPropNameInRow="BldAddressStreetName" msprop:Generator_ColumnVarNameInTable="columnBldAddressStreetName" msprop:Generator_ColumnPropNameInTable="BldAddressStreetNameColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="BldAddressStreetSuffix" msprop:Generator_UserColumnName="BldAddressStreetSuffix" msprop:Generator_ColumnPropNameInRow="BldAddressStreetSuffix" msprop:Generator_ColumnVarNameInTable="columnBldAddressStreetSuffix" msprop:Generator_ColumnPropNameInTable="BldAddressStreetSuffixColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="BldAddressStreetSuite" msprop:Generator_UserColumnName="BldAddressStreetSuite" msprop:Generator_ColumnPropNameInRow="BldAddressStreetSuite" msprop:Generator_ColumnVarNameInTable="columnBldAddressStreetSuite" msprop:Generator_ColumnPropNameInTable="BldAddressStreetSuiteColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="BldAddressState" msprop:Generator_UserColumnName="BldAddressState" msprop:Generator_ColumnPropNameInRow="BldAddressState" msprop:Generator_ColumnVarNameInTable="columnBldAddressState" msprop:Generator_ColumnPropNameInTable="BldAddressStateColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="BldAddressCity" msprop:Generator_UserColumnName="BldAddressCity" msprop:Generator_ColumnPropNameInRow="BldAddressCity" msprop:Generator_ColumnVarNameInTable="columnBldAddressCity" msprop:Generator_ColumnPropNameInTable="BldAddressCityColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="BldAddressCountry" msprop:Generator_UserColumnName="BldAddressCountry" msprop:Generator_ColumnPropNameInRow="BldAddressCountry" msprop:Generator_ColumnVarNameInTable="columnBldAddressCountry" msprop:Generator_ColumnPropNameInTable="BldAddressCountryColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="BldAddressZip" msprop:Generator_UserColumnName="BldAddressZip" msprop:Generator_ColumnPropNameInRow="BldAddressZip" msprop:Generator_ColumnVarNameInTable="columnBldAddressZip" msprop:Generator_ColumnPropNameInTable="BldAddressZipColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="BldContactName" msprop:Generator_UserColumnName="BldContactName" msprop:Generator_ColumnPropNameInRow="BldContactName" msprop:Generator_ColumnVarNameInTable="columnBldContactName" msprop:Generator_ColumnPropNameInTable="BldContactNameColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="BldContactDescription" msprop:Generator_UserColumnName="BldContactDescription" msprop:Generator_ColumnPropNameInRow="BldContactDescription" msprop:Generator_ColumnVarNameInTable="columnBldContactDescription" msprop:Generator_ColumnPropNameInTable="BldContactDescriptionColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="BldAddPhone" msprop:Generator_UserColumnName="BldAddPhone" msprop:Generator_ColumnPropNameInRow="BldAddPhone" msprop:Generator_ColumnVarNameInTable="columnBldAddPhone" msprop:Generator_ColumnPropNameInTable="BldAddPhoneColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="BldAddEmail" msprop:Generator_UserColumnName="BldAddEmail" msprop:Generator_ColumnPropNameInRow="BldAddEmail" msprop:Generator_ColumnVarNameInTable="columnBldAddEmail" msprop:Generator_ColumnPropNameInTable="BldAddEmailColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SpaceAddStreetNumber" msprop:Generator_UserColumnName="SpaceAddStreetNumber" msprop:Generator_ColumnPropNameInRow="SpaceAddStreetNumber" msprop:Generator_ColumnVarNameInTable="columnSpaceAddStreetNumber" msprop:Generator_ColumnPropNameInTable="SpaceAddStreetNumberColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SpaceAddStreetDirection" msprop:Generator_UserColumnName="SpaceAddStreetDirection" msprop:Generator_ColumnPropNameInRow="SpaceAddStreetDirection" msprop:Generator_ColumnVarNameInTable="columnSpaceAddStreetDirection" msprop:Generator_ColumnPropNameInTable="SpaceAddStreetDirectionColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SpaceAddStreetName" msprop:Generator_UserColumnName="SpaceAddStreetName" msprop:Generator_ColumnPropNameInRow="SpaceAddStreetName" msprop:Generator_ColumnVarNameInTable="columnSpaceAddStreetName" msprop:Generator_ColumnPropNameInTable="SpaceAddStreetNameColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SpaceAddStreetSuffix" msprop:Generator_UserColumnName="SpaceAddStreetSuffix" msprop:Generator_ColumnPropNameInRow="SpaceAddStreetSuffix" msprop:Generator_ColumnVarNameInTable="columnSpaceAddStreetSuffix" msprop:Generator_ColumnPropNameInTable="SpaceAddStreetSuffixColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SpaceAddStreetSuite" msprop:Generator_UserColumnName="SpaceAddStreetSuite" msprop:Generator_ColumnPropNameInRow="SpaceAddStreetSuite" msprop:Generator_ColumnVarNameInTable="columnSpaceAddStreetSuite" msprop:Generator_ColumnPropNameInTable="SpaceAddStreetSuiteColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SpaceAddCity" msprop:Generator_UserColumnName="SpaceAddCity" msprop:Generator_ColumnPropNameInRow="SpaceAddCity" msprop:Generator_ColumnVarNameInTable="columnSpaceAddCity" msprop:Generator_ColumnPropNameInTable="SpaceAddCityColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SpaceAddState" msprop:Generator_UserColumnName="SpaceAddState" msprop:Generator_ColumnPropNameInRow="SpaceAddState" msprop:Generator_ColumnVarNameInTable="columnSpaceAddState" msprop:Generator_ColumnPropNameInTable="SpaceAddStateColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SpaceAddZip" msprop:Generator_UserColumnName="SpaceAddZip" msprop:Generator_ColumnPropNameInRow="SpaceAddZip" msprop:Generator_ColumnVarNameInTable="columnSpaceAddZip" msprop:Generator_ColumnPropNameInTable="SpaceAddZipColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SpaceAddCountry" msprop:Generator_UserColumnName="SpaceAddCountry" msprop:Generator_ColumnPropNameInRow="SpaceAddCountry" msprop:Generator_ColumnVarNameInTable="columnSpaceAddCountry" msprop:Generator_ColumnPropNameInTable="SpaceAddCountryColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1">
+      <xs:selector xpath=".//mstns:vw_DetailofBuilding_Report" />
+      <xs:field xpath="mstns:BuildingId" />
+      <xs:field xpath="mstns:TenantId" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

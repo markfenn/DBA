@@ -1,0 +1,1216 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{2E0CD2C1-72D5-4233-A380-C26A211451EF}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DowntownBoiseAssociation</RootNamespace>
+    <AssemblyName>DowntownBoiseAssociation</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <StartupObject>DowntownBoiseAssociation.Program</StartupObject>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+    <ApplicationIcon>dba1.ico</ApplicationIcon>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>2.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.configuration">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Data.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.EnterpriseServices">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.ServiceModel">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Web">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Web.Extensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Web.Services">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Data">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Deployment">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Drawing">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Windows.Forms">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Classes\AddressHelper.cs" />
+    <Compile Include="Classes\Data\BLL\Registry.cs" />
+    <Compile Include="Classes\Data\DAL\DEF_BlockPoints.cs" />
+    <Compile Include="Classes\Data\BLL\ImagePoints.cs" />
+    <Compile Include="Classes\Data\DAL\DEF_Search.cs" />
+    <Compile Include="Classes\ListValues.cs" />
+    <Compile Include="Classes\SaveListViewToFile.cs" />
+    <Compile Include="Classes\SearchType.cs" />
+    <Compile Include="Classes\URIString.cs" />
+    <Compile Include="Controls\DBA.Address.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\DBA.Address.Designer.cs">
+      <DependentUpon>DBA.Address.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\DBA_AccountBilling.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\DBA_AccountBilling.Designer.cs">
+      <DependentUpon>DBA_AccountBilling.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\DBA_Block.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\DBA_Block.Designer.cs">
+      <DependentUpon>DBA_Block.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\DBA_BusNameContact.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\DBA_BusNameContact.Designer.cs">
+      <DependentUpon>DBA_BusNameContact.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\DBA_ClassCategoryItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\DBA_ClassCategoryItem.Designer.cs">
+      <DependentUpon>DBA_ClassCategoryItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\DBA_CommentDisplay.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\DBA_CommentDisplay.Designer.cs">
+      <DependentUpon>DBA_CommentDisplay.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\DBA_Comments.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\DBA_Comments.Designer.cs">
+      <DependentUpon>DBA_Comments.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\DBA_Contact.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\DBA_Contact.Designer.cs">
+      <DependentUpon>DBA_Contact.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\DBA_ContactDisplay.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\DBA_ContactDisplay.Designer.cs">
+      <DependentUpon>DBA_ContactDisplay.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\DBA_ControlListItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\DBA_ControlListItem.Designer.cs">
+      <DependentUpon>DBA_ControlListItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\DBA_LegalEntity.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\DBA_LegalEntity.Designer.cs">
+      <DependentUpon>DBA_LegalEntity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\DBA_Location.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\DBA_Location.Designer.cs">
+      <DependentUpon>DBA_Location.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\DBA_NullableDateTimePicker.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\DBA_PaymentHistory.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\DBA_PaymentHistory.Designer.cs">
+      <DependentUpon>DBA_PaymentHistory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\DBA_PointEdit.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\DBA_PointEdit.Designer.cs">
+      <DependentUpon>DBA_PointEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\DBA_SearchItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\DBA_SearchItem.Designer.cs">
+      <DependentUpon>DBA_SearchItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\DBA_TenantSpaces.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\DBA_TenantSpaces.Designer.cs">
+      <DependentUpon>DBA_TenantSpaces.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\editBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\editBase.Designer.cs">
+      <DependentUpon>editBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\editBoolean.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\editBoolean.Designer.cs">
+      <DependentUpon>editBoolean.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\editClass.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\editClass.Designer.cs">
+      <DependentUpon>editClass.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\editProperties.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\editProperties.Designer.cs">
+      <DependentUpon>editProperties.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\editString.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\editString.Designer.cs">
+      <DependentUpon>editString.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\DBA_OrientedTextLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\CommentIndicator.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\CommentIndicator.Designer.cs">
+      <DependentUpon>CommentIndicator.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\editURI.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\editURI.Designer.cs">
+      <DependentUpon>editURI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataClassesSmall.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataClassesSmall.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="DBA.cs" />
+    <Compile Include="DBA.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBA.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="DBAProductionDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBAProductionDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="dialogAddAdjustment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dialogAddAdjustment.Designer.cs">
+      <DependentUpon>dialogAddAdjustment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="dialogBiuldingSelector.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dialogBiuldingSelector.Designer.cs">
+      <DependentUpon>dialogBiuldingSelector.cs</DependentUpon>
+    </Compile>
+    <Compile Include="dialogBlockSelector.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dialogBlockSelector.designer.cs">
+      <DependentUpon>dialogBlockSelector.cs</DependentUpon>
+    </Compile>
+    <Compile Include="dialogClassCategorySelector.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dialogClassCategorySelector.Designer.cs">
+      <DependentUpon>dialogClassCategorySelector.cs</DependentUpon>
+    </Compile>
+    <Compile Include="dialogMisappliedPayment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dialogMisappliedPayment.Designer.cs">
+      <DependentUpon>dialogMisappliedPayment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="dialogSearchSpace.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dialogSearchSpace.Designer.cs">
+      <DependentUpon>dialogSearchSpace.cs</DependentUpon>
+    </Compile>
+    <Compile Include="dialogSimpleListBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dialogSimpleListBox.Designer.cs">
+      <DependentUpon>dialogSimpleListBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="dialogSpaceOwner.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dialogSpaceOwner.Designer.cs">
+      <DependentUpon>dialogSpaceOwner.cs</DependentUpon>
+    </Compile>
+    <Compile Include="dialogSpaceTenant.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dialogSpaceTenant.Designer.cs">
+      <DependentUpon>dialogSpaceTenant.cs</DependentUpon>
+    </Compile>
+    <Compile Include="dialogSpaceVacate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dialogSpaceVacate.Designer.cs">
+      <DependentUpon>dialogSpaceVacate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="dialogTenantAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dialogTenantAdd.Designer.cs">
+      <DependentUpon>dialogTenantAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmBlockAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBlockAdd.Designer.cs">
+      <DependentUpon>frmBlockAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmBuildingAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBuildingAdd.Designer.cs">
+      <DependentUpon>frmBuildingAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmContactSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmContactSearch.Designer.cs">
+      <DependentUpon>frmContactSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLateFeeProcessing.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLateFeeProcessing.Designer.cs">
+      <DependentUpon>frmLateFeeProcessing.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLateFeeProcessingDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLateFeeProcessingDialog.Designer.cs">
+      <DependentUpon>frmLateFeeProcessingDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMaintainContactsNew.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMaintainContactsNew.Designer.cs">
+      <DependentUpon>frmMaintainContactsNew.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTenantNew.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTenantNew.Designer.cs">
+      <DependentUpon>frmTenantNew.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmZoneMaint.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmZoneMaint.Designer.cs">
+      <DependentUpon>frmZoneMaint.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmInvoiceBatch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmInvoiceBatch.Designer.cs">
+      <DependentUpon>frmInvoiceBatch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmOneQuestionDialogBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmOneQuestionDialogBox.Designer.cs">
+      <DependentUpon>frmOneQuestionDialogBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormReports\reportMailingLabels.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormReports\reportMailingLabels.Designer.cs">
+      <DependentUpon>reportMailingLabels.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmContactUpdate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmContactUpdate.Designer.cs">
+      <DependentUpon>frmContactUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReportsDataClasses.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReportsDataClasses.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="report_Main.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="report_Main.Designer.cs">
+      <DependentUpon>report_Main.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmBuildingsByBlock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBuildingsByBlock.Designer.cs">
+      <DependentUpon>frmBuildingsByBlock.cs</DependentUpon>
+    </Compile>
+    <Compile Include="dialogImagePointEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dialogImagePointEdit.Designer.cs">
+      <DependentUpon>dialogImagePointEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="dialogSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dialogSearch.Designer.cs">
+      <DependentUpon>dialogSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="dialogSearchContact.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dialogSearchContact.Designer.cs">
+      <DependentUpon>dialogSearchContact.cs</DependentUpon>
+    </Compile>
+    <Compile Include="dialogText.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dialogText.Designer.cs">
+      <DependentUpon>dialogText.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmAdminLookUps.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAdminLookUps.Designer.cs">
+      <DependentUpon>frmAdminLookUps.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmAttributeMaster.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAttributeMaster.Designer.cs">
+      <DependentUpon>frmAttributeMaster.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmBlock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBlock.Designer.cs">
+      <DependentUpon>frmBlock.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmBuilding.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBuilding.Designer.cs">
+      <DependentUpon>frmBuilding.cs</DependentUpon>
+    </Compile>
+    <Compile Include="dialogSearchAddress.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dialogSearchAddress.Designer.cs">
+      <DependentUpon>dialogSearchAddress.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPerformBilling.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPerformBilling.Designer.cs">
+      <DependentUpon>frmPerformBilling.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSpace.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSpace.Designer.cs">
+      <DependentUpon>frmSpace.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTenantByDateRange.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTenantByDateRange.Designer.cs">
+      <DependentUpon>frmTenantByDateRange.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmUtilityCommentMaintain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUtilityCommentMaintain.Designer.cs">
+      <DependentUpon>frmUtilityCommentMaintain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmUtilityContactMaintain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUtilityContactMaintain.Designer.cs">
+      <DependentUpon>frmUtilityContactMaintain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLegalEntity.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLegalEntity.Designer.cs">
+      <DependentUpon>frmLegalEntity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLinkCats2Class.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLinkCats2Class.Designer.cs">
+      <DependentUpon>frmLinkCats2Class.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMaintainRates.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMaintainRates.Designer.cs">
+      <DependentUpon>frmMaintainRates.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmAdminZone.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAdminZone.Designer.cs">
+      <DependentUpon>frmAdminZone.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDBAContainer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDBAContainer.Designer.cs">
+      <DependentUpon>frmDBAContainer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="dialogPerformBilling.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dialogPerformBilling.Designer.cs">
+      <DependentUpon>dialogPerformBilling.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmRateMasterRules.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRateMasterRules.Designer.cs">
+      <DependentUpon>frmRateMasterRules.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmRelationshipViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRelationshipViewer.Designer.cs">
+      <DependentUpon>frmRelationshipViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTenant.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTenant.Designer.cs">
+      <DependentUpon>frmTenant.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmAttributeViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAttributeViewer.Designer.cs">
+      <DependentUpon>frmAttributeViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmUtilityAddressMaintain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUtilityAddressMaintain.Designer.cs">
+      <DependentUpon>frmUtilityAddressMaintain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmUtilityImageMaintain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUtilityImageMaintain.Designer.cs">
+      <DependentUpon>frmUtilityImageMaintain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="dialogSearchLegalEntity.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dialogSearchLegalEntity.Designer.cs">
+      <DependentUpon>dialogSearchLegalEntity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Controls\DBA.Address.resx">
+      <DependentUpon>DBA.Address.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\DBA_AccountBilling.resx">
+      <DependentUpon>DBA_AccountBilling.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\DBA_Block.resx">
+      <DependentUpon>DBA_Block.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\DBA_BusNameContact.resx">
+      <DependentUpon>DBA_BusNameContact.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\DBA_ClassCategoryItem.resx">
+      <DependentUpon>DBA_ClassCategoryItem.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\DBA_CommentDisplay.resx">
+      <DependentUpon>DBA_CommentDisplay.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\DBA_Comments.resx">
+      <DependentUpon>DBA_Comments.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\DBA_Contact.resx">
+      <DependentUpon>DBA_Contact.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\DBA_ContactDisplay.resx">
+      <DependentUpon>DBA_ContactDisplay.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\DBA_ControlListItem.resx">
+      <DependentUpon>DBA_ControlListItem.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\DBA_LegalEntity.resx">
+      <DependentUpon>DBA_LegalEntity.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\DBA_Location.resx">
+      <DependentUpon>DBA_Location.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <EmbeddedResource Include="Controls\DBA_PaymentHistory.resx">
+      <DependentUpon>DBA_PaymentHistory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\DBA_PointEdit.resx">
+      <DependentUpon>DBA_PointEdit.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\DBA_SearchItem.resx">
+      <DependentUpon>DBA_SearchItem.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\DBA_TenantSpaces.resx">
+      <DependentUpon>DBA_TenantSpaces.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\editBase.resx">
+      <DependentUpon>editBase.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\editBoolean.resx">
+      <DependentUpon>editBoolean.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\editClass.resx">
+      <DependentUpon>editClass.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\editProperties.resx">
+      <DependentUpon>editProperties.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\editString.resx">
+      <DependentUpon>editString.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\DBA_OrientedTextLabel.resx">
+      <DependentUpon>DBA_OrientedTextLabel.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\CommentIndicator.resx">
+      <DependentUpon>CommentIndicator.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\editURI.resx">
+      <DependentUpon>editURI.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <None Include="DataClassesSmall.dbml.layout">
+      <DependentUpon>DataClassesSmall.dbml</DependentUpon>
+    </None>
+    <None Include="DBA.dbml.layout">
+      <DependentUpon>DBA.dbml</DependentUpon>
+    </None>
+    <EmbeddedResource Include="dialogAddAdjustment.resx">
+      <DependentUpon>dialogAddAdjustment.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dialogBiuldingSelector.resx">
+      <DependentUpon>dialogBiuldingSelector.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dialogBlockSelector.resx">
+      <DependentUpon>dialogBlockSelector.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dialogClassCategorySelector.resx">
+      <DependentUpon>dialogClassCategorySelector.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dialogMisappliedPayment.resx">
+      <DependentUpon>dialogMisappliedPayment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dialogSearchSpace.resx">
+      <DependentUpon>dialogSearchSpace.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dialogSimpleListBox.resx">
+      <DependentUpon>dialogSimpleListBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dialogSpaceOwner.resx">
+      <DependentUpon>dialogSpaceOwner.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dialogSpaceTenant.resx">
+      <DependentUpon>dialogSpaceTenant.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dialogSpaceVacate.resx">
+      <DependentUpon>dialogSpaceVacate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dialogTenantAdd.resx">
+      <DependentUpon>dialogTenantAdd.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmBlockAdd.resx">
+      <DependentUpon>frmBlockAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmBuildingAdd.resx">
+      <DependentUpon>frmBuildingAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmContactSearch.resx">
+      <DependentUpon>frmContactSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmContactUpdate.resx">
+      <DependentUpon>frmContactUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLateFeeProcessing.resx">
+      <DependentUpon>frmLateFeeProcessing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLateFeeProcessingDialog.resx">
+      <DependentUpon>frmLateFeeProcessingDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMaintainContactsNew.resx">
+      <DependentUpon>frmMaintainContactsNew.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTenantNew.resx">
+      <DependentUpon>frmTenantNew.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmZoneMaint.resx">
+      <DependentUpon>frmZoneMaint.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmInvoiceBatch.resx">
+      <DependentUpon>frmInvoiceBatch.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmOneQuestionDialogBox.resx">
+      <DependentUpon>frmOneQuestionDialogBox.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormReports\reportMailingLabels.resx">
+      <DependentUpon>reportMailingLabels.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <None Include="DBAProductionDataSet.xsc">
+      <DependentUpon>DBAProductionDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="DBAProductionDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DBAProductionDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DBAProductionDataSet.xss">
+      <DependentUpon>DBAProductionDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ReportsDataClasses.dbml.layout">
+      <DependentUpon>ReportsDataClasses.dbml</DependentUpon>
+    </None>
+    <EmbeddedResource Include="report_Main.resx">
+      <DependentUpon>report_Main.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmBuildingsByBlock.resx">
+      <DependentUpon>frmBuildingsByBlock.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dialogImagePointEdit.resx">
+      <DependentUpon>dialogImagePointEdit.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dialogSearch.resx">
+      <DependentUpon>dialogSearch.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dialogSearchContact.resx">
+      <DependentUpon>dialogSearchContact.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dialogText.resx">
+      <DependentUpon>dialogText.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAdminLookUps.resx">
+      <DependentUpon>frmAdminLookUps.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAttributeMaster.resx">
+      <DependentUpon>frmAttributeMaster.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmBlock.resx">
+      <DependentUpon>frmBlock.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmBuilding.resx">
+      <DependentUpon>frmBuilding.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dialogSearchAddress.resx">
+      <DependentUpon>dialogSearchAddress.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPerformBilling.resx">
+      <DependentUpon>frmPerformBilling.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSpace.resx">
+      <DependentUpon>frmSpace.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTenantByDateRange.resx">
+      <DependentUpon>frmTenantByDateRange.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUtilityCommentMaintain.resx">
+      <DependentUpon>frmUtilityCommentMaintain.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUtilityContactMaintain.resx">
+      <DependentUpon>frmUtilityContactMaintain.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLegalEntity.resx">
+      <DependentUpon>frmLegalEntity.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLinkCats2Class.resx">
+      <DependentUpon>frmLinkCats2Class.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMaintainRates.resx">
+      <DependentUpon>frmMaintainRates.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAdminZone.resx">
+      <DependentUpon>frmAdminZone.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDBAContainer.resx">
+      <DependentUpon>frmDBAContainer.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dialogPerformBilling.resx">
+      <DependentUpon>dialogPerformBilling.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRateMasterRules.resx">
+      <DependentUpon>frmRateMasterRules.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRelationshipViewer.resx">
+      <DependentUpon>frmRelationshipViewer.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTenant.resx">
+      <DependentUpon>frmTenant.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAttributeViewer.resx">
+      <DependentUpon>frmAttributeViewer.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUtilityAddressMaintain.resx">
+      <DependentUpon>frmUtilityAddressMaintain.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUtilityImageMaintain.resx">
+      <DependentUpon>frmUtilityImageMaintain.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dialogSearchLegalEntity.resx">
+      <DependentUpon>dialogSearchLegalEntity.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormReports\reportBlockPersonsContactingInfo.resx">
+      <DependentUpon>reportBlockPersonsContactingInfo.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="report_ReportsList.resx">
+      <DependentUpon>report_ReportsList.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Splash.resx">
+      <DependentUpon>Splash.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="DBA.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>DBA.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\DataSources\Zone.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="RateRule.cs" />
+    <Compile Include="FormReports\reportBlockPersonsContactingInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormReports\reportBlockPersonsContactingInfo.Designer.cs">
+      <DependentUpon>reportBlockPersonsContactingInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="report_ReportsList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="report_ReportsList.Designer.cs">
+      <DependentUpon>report_ReportsList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Splash.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Splash.Designer.cs">
+      <DependentUpon>Splash.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\Reports.ReportServer\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="CityOfBoise.ico" />
+    <Content Include="DBA.ICO" />
+    <Content Include="dba1.ico" />
+    <None Include="refresh.jpg" />
+    <None Include="Resources\Building.ico" />
+    <Content Include="Resources\Building.jpg" />
+    <Content Include="Resources\CheckBoxHS.bmp" />
+    <None Include="DataClassesSmall.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>DataClassesSmall.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ReportsDataClasses.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>ReportsDataClasses.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\dbaBuilding.bmp" />
+    <Content Include="Resources\dba_banner.jpg" />
+    <Content Include="Resources\dba_logo2.png" />
+    <None Include="Resources\dba_logo21.png" />
+    <Content Include="Resources\downtownmap2.jpg" />
+    <None Include="Resources\grad.png" />
+    <None Include="Resources\grad2.png" />
+    <None Include="Resources\gradContainer.png" />
+    <None Include="Resources\government.ico" />
+    <Content Include="Resources\government.jpg" />
+    <Content Include="Resources\leftArrow.GIF" />
+    <Content Include="Resources\LegalEntity.jpg" />
+    <None Include="Resources\LegalEntity1.jpg" />
+    <None Include="Resources\LegalEntity1.ico" />
+    <None Include="Resources\parking.ico" />
+    <Content Include="Resources\parking.jpg" />
+    <Content Include="Resources\rightArrow.GIF" />
+    <None Include="Resources\space.jpg" />
+    <None Include="Resources\space.ico" />
+    <None Include="Resources\Tenant.ico" />
+    <Content Include="Resources\Tenant.jpg" />
+    <None Include="Properties\DataSources\Building.datasource" />
+    <None Include="Properties\DataSources\fn_GetAccountStatementResult.datasource" />
+    <None Include="Properties\DataSources\fn_GetTenantSpacesResult.datasource" />
+    <None Include="Properties\DataSources\InvoiceDetail.datasource" />
+    <None Include="Properties\DataSources\LookupCommercialParcelInfo.datasource" />
+    <None Include="Properties\DataSources\vw_BuildingsByBlock.datasource" />
+    <None Include="Properties\DataSources\vw_DetailofBuilding_Report.datasource" />
+    <None Include="Properties\DataSources\vw_ParcelNumberLookUp.datasource" />
+    <None Include="Properties\DataSources\vw_TenantBillingAddressandVotingInfo1.datasource" />
+    <None Include="Properties\DataSources\vw_TenantListingbyBuilding.datasource" />
+    <None Include="Properties\DataSources\vw_Zone.datasource" />
+    <None Include="Resources\checkboxhs1.bmp" />
+    <None Include="Properties\DataSources\Attribute.datasource" />
+    <None Include="Properties\DataSources\Block.datasource" />
+    <None Include="Properties\DataSources\Category.datasource" />
+    <None Include="Properties\DataSources\Class.datasource" />
+    <None Include="Properties\DataSources\RateMaster.datasource" />
+    <None Include="Properties\DataSources\Street.datasource" />
+    <None Include="Properties\DataSources\StreetBlock.datasource" />
+    <None Include="Properties\DataSources\Tenant.datasource" />
+    <None Include="Properties\DataSources\vw_SubdivisionName.datasource" />
+    <None Include="Resources\dbamap.jpg" />
+    <None Include="Resources\test.snk" />
+    <None Include="Web References\Reports.ReportServer\ActiveState.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\Reports.ReportServer\CatalogItem.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\Reports.ReportServer\DataRetrievalPlan.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\Reports.ReportServer\DataSetDefinition.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\Reports.ReportServer\DataSource.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\Reports.ReportServer\DataSourceDefinition.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\Reports.ReportServer\DataSourcePrompt.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\Reports.ReportServer\Event.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\Reports.ReportServer\ExecutionSettingEnum.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\Reports.ReportServer\ExpirationDefinition.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\Reports.ReportServer\Extension.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\Reports.ReportServer\ExtensionParameter.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\Reports.ReportServer\ExtensionSettings.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\Reports.ReportServer\ItemTypeEnum.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\Reports.ReportServer\Job.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\Reports.ReportServer\ModelCatalogItem.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\Reports.ReportServer\ModelDrillthroughReport.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\Reports.ReportServer\ModelItem.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\Reports.ReportServer\ParameterValue.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\Reports.ReportServer\ParameterValueOrFieldReference.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\Reports.ReportServer\Policy.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\Reports.ReportServer\Property.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\Reports.ReportServer\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\Reports.ReportServer\ReportHistorySnapshot.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\Reports.ReportServer\ReportParameter.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\Reports.ReportServer\reportservice2005.wsdl" />
+    <None Include="Web References\Reports.ReportServer\Role.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\Reports.ReportServer\Schedule.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\Reports.ReportServer\ScheduleDefinitionOrReference.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\Reports.ReportServer\Subscription.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\Reports.ReportServer\Task.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\Reports.ReportServer\Warning.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="http://ch-dbweb/reportserver/reportservice2005.asmx%3fwsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Reports.ReportServer\</RelPath>
+      <UpdateFromURL>http://ch-dbweb/reportserver/reportservice2005.asmx%3fwsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>DowntownBoiseAssociation_Reports_ReportServer_ReportingService2005</CachedSettingsPropName>
+    </WebReferenceUrl>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Reports\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

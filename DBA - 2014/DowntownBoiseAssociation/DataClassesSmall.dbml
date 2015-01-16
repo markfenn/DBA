@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="DBAProduction" Class="DataClassesSmallDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=ch-dbweb;Initial Catalog=DBAProduction;Persist Security Info=True;User ID=DBAProduction" SettingsObjectName="DowntownBoiseAssociation.Properties.Settings" SettingsPropertyName="DBADevConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.vw_MapAndDirectory_CSV" Member="vw_MapAndDirectory_CSVs">
+    <Type Name="vw_MapAndDirectory_CSV">
+      <Column Name="CSVFile" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Building" Member="Buildings">
+    <Type Name="Building">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="BlockId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ParcelNo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Floors" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="YearBuilt" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="YearRenovated" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RentableSqFt" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AverageRent" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="TotalSqFt" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UnbillableSqFt" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Guid" AutoSync="Never" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="AddressId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>

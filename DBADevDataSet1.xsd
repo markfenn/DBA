@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DBADevDataSet" targetNamespace="http://tempuri.org/DBADevDataSet1.xsd" xmlns:mstns="http://tempuri.org/DBADevDataSet1.xsd" xmlns="http://tempuri.org/DBADevDataSet1.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="DBADevConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="DBADevConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.DowntownBoiseAssociation.Properties.Settings.GlobalReference.Default.DBADevConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="vw_TenantListingbyBuildingTableAdapter" GeneratorDataComponentClassName="vw_TenantListingbyBuildingTableAdapter" Name="vw_TenantListingbyBuilding" UserDataComponentName="vw_TenantListingbyBuildingTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="DBADevConnectionString (Settings)" DbObjectName="DBADev.dbo.vw_TenantListingbyBuilding" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT BuildingId, TenantId, BuildingName, Name, DateOpened, DateClosed, DateUpdated, Votes, IsAssessed, IsPublished FROM dbo.vw_TenantListingbyBuilding</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="BuildingId" DataSetColumn="BuildingId" />
+              <Mapping SourceColumn="TenantId" DataSetColumn="TenantId" />
+              <Mapping SourceColumn="BuildingName" DataSetColumn="BuildingName" />
+              <Mapping SourceColumn="Name" DataSetColumn="Name" />
+              <Mapping SourceColumn="DateOpened" DataSetColumn="DateOpened" />
+              <Mapping SourceColumn="DateClosed" DataSetColumn="DateClosed" />
+              <Mapping SourceColumn="DateUpdated" DataSetColumn="DateUpdated" />
+              <Mapping SourceColumn="Votes" DataSetColumn="Votes" />
+              <Mapping SourceColumn="IsAssessed" DataSetColumn="IsAssessed" />
+              <Mapping SourceColumn="IsPublished" DataSetColumn="IsPublished" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DBADevDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_DataSetName="DBADevDataSet" msprop:Generator_UserDSName="DBADevDataSet" msprop:EnableTableAdapterManager="True">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="vw_TenantListingbyBuilding" msprop:Generator_UserTableName="vw_TenantListingbyBuilding" msprop:Generator_RowDeletedName="vw_TenantListingbyBuildingRowDeleted" msprop:Generator_TableClassName="vw_TenantListingbyBuildingDataTable" msprop:Generator_RowChangedName="vw_TenantListingbyBuildingRowChanged" msprop:Generator_RowClassName="vw_TenantListingbyBuildingRow" msprop:Generator_RowChangingName="vw_TenantListingbyBuildingRowChanging" msprop:Generator_RowEvArgName="vw_TenantListingbyBuildingRowChangeEvent" msprop:Generator_RowEvHandlerName="vw_TenantListingbyBuildingRowChangeEventHandler" msprop:Generator_TablePropName="vw_TenantListingbyBuilding" msprop:Generator_TableVarName="tablevw_TenantListingbyBuilding" msprop:Generator_RowDeletingName="vw_TenantListingbyBuildingRowDeleting">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="BuildingId" msprop:Generator_UserColumnName="BuildingId" msprop:Generator_ColumnPropNameInRow="BuildingId" msprop:Generator_ColumnVarNameInTable="columnBuildingId" msprop:Generator_ColumnPropNameInTable="BuildingIdColumn" type="xs:int" />
+              <xs:element name="TenantId" msprop:Generator_UserColumnName="TenantId" msprop:Generator_ColumnPropNameInRow="TenantId" msprop:Generator_ColumnVarNameInTable="columnTenantId" msprop:Generator_ColumnPropNameInTable="TenantIdColumn" type="xs:int" />
+              <xs:element name="BuildingName" msprop:Generator_UserColumnName="BuildingName" msprop:Generator_ColumnPropNameInRow="BuildingName" msprop:Generator_ColumnVarNameInTable="columnBuildingName" msprop:Generator_ColumnPropNameInTable="BuildingNameColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Name" msprop:Generator_UserColumnName="Name" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInTable="NameColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DateOpened" msprop:Generator_UserColumnName="DateOpened" msprop:Generator_ColumnPropNameInRow="DateOpened" msprop:Generator_ColumnVarNameInTable="columnDateOpened" msprop:Generator_ColumnPropNameInTable="DateOpenedColumn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="DateClosed" msprop:Generator_UserColumnName="DateClosed" msprop:Generator_ColumnPropNameInRow="DateClosed" msprop:Generator_ColumnVarNameInTable="columnDateClosed" msprop:Generator_ColumnPropNameInTable="DateClosedColumn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="DateUpdated" msprop:Generator_UserColumnName="DateUpdated" msprop:Generator_ColumnPropNameInRow="DateUpdated" msprop:Generator_ColumnVarNameInTable="columnDateUpdated" msprop:Generator_ColumnPropNameInTable="DateUpdatedColumn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Votes" msprop:Generator_UserColumnName="Votes" msprop:Generator_ColumnPropNameInRow="Votes" msprop:Generator_ColumnVarNameInTable="columnVotes" msprop:Generator_ColumnPropNameInTable="VotesColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="IsAssessed" msprop:Generator_UserColumnName="IsAssessed" msprop:Generator_ColumnPropNameInRow="IsAssessed" msprop:Generator_ColumnVarNameInTable="columnIsAssessed" msprop:Generator_ColumnPropNameInTable="IsAssessedColumn" type="xs:boolean" minOccurs="0" />
+              <xs:element name="IsPublished" msprop:Generator_UserColumnName="IsPublished" msprop:Generator_ColumnPropNameInRow="IsPublished" msprop:Generator_ColumnVarNameInTable="columnIsPublished" msprop:Generator_ColumnPropNameInTable="IsPublishedColumn" type="xs:boolean" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:vw_TenantListingbyBuilding" />
+      <xs:field xpath="mstns:BuildingId" />
+      <xs:field xpath="mstns:TenantId" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>
