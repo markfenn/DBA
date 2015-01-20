@@ -62,8 +62,7 @@ namespace DowntownBoiseAssociation
         }
 
         public frmBuilding(int BuildingId)
-        {
-            //MessageBox.Show("1");
+        {            
             _BuildingId = BuildingId;
 
             InitializeComponent();
@@ -72,38 +71,33 @@ namespace DowntownBoiseAssociation
                                                orderby c.Name
                                                where c.Id.Equals(BuildingId)
                                                select c;
-            //MessageBox.Show("2");
+         
             _Building = (from a in dc.Buildings
                          where a.Id == BuildingId
                          select a).FirstOrDefault();
 
-           // MessageBox.Show("3");
-            _Block = (from a in dc.Blocks
+                     _Block = (from a in dc.Blocks
                       where a.Id == _Building.BlockId
                       select a).FirstOrDefault();
 
-            //MessageBox.Show("4");
-            this.Text = "Building - " + _Building.Name;
+                     this.Text = "Building - " + _Building.Name;
 
             CommentDisplayBuilding.ObjectGuid = _Building.Guid.Value;
             ContactDisplayBuilding.ObjectGuid = _Building.Guid.Value;
             editProperties1.ObjectGuid = _Building.Guid.Value;
             grdTenants.AutoGenerateColumns = false;
 
-           // MessageBox.Show("5");
             DBA.Building BuildingSmall = (from a in dbsmall.Buildings
                                           where a.Id == BuildingId
                                           select a).FirstOrDefault();
 
-
-            //MessageBox.Show("6");
             if (BuildingSmall == null) return;
             if (BuildingSmall.AddressId == null) return;
 
             AddressId = BuildingSmall.AddressId.Value;
 
             linkAddress.Text = Classes.AddressHelper.FormatAddress(BuildingSmall.AddressId.Value);
-            //MessageBox.Show("7");
+            
             AppInfo();
             
         }
@@ -173,24 +167,17 @@ namespace DowntownBoiseAssociation
 
 
         private void frmBuilding_Load(object sender, EventArgs e)
-        {
-            //MessageBox.Show("8");
+        {           
             buildingBindingSource.DataSource = from c in dc.Buildings
                                                orderby c.Name
                                                where c.Id.Equals(BuildingId)
                                                select c;
-            //MessageBox.Show("9");
-
+         
             var Spaces = from a in dc.vw_Spaces
                          where a.BuildingId == _BuildingId
                          select a;
 
-            //MessageBox.Show("10");
-
             grdTenants.DataSource = Spaces;
-
-
-            //MessageBox.Show("11");
 
             foreach (var Item in Spaces)
             {
@@ -198,8 +185,6 @@ namespace DowntownBoiseAssociation
                 if (Item.TenantId == 0) { VacantCount++; }
             }
             lblSpaces.Text = string.Format("This building contains {0} Spaces, of which {1} are vacant.", SpacesCount, VacantCount);
-
-            //MessageBox.Show("12");
 
             if (_Block == null)
             {
@@ -210,7 +195,6 @@ namespace DowntownBoiseAssociation
                 btnBlock.Text = _Block.BlockNumber.ToString();
             }
 
-            //MessageBox.Show("13");
             try
             {
                 (this.ParentForm as frmDBAContainer).AddControlListItem("BUILDING", this.Text, 0);
@@ -224,8 +208,16 @@ namespace DowntownBoiseAssociation
         {
             if (e.RowIndex < 0) { return; }
 
-            if (grdTenants.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString() == "VACANT") 
-            { return; }
+            if (grdTenants.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString().StartsWith("VACANT")) 
+            {
+                string[] VacantStr = grdTenants.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString().Split(Convert.ToChar("-"));
+                int STInt = Convert.ToInt32(VacantStr[1]);
+
+                dialogSpaceTenant newSP = new dialogSpaceTenant(0,STInt);
+                newSP.ShowDialog();
+                
+                return;
+            }
 
             frmDBAContainer dbaContainer = this.MdiParent as frmDBAContainer;
 
@@ -425,8 +417,5 @@ namespace DowntownBoiseAssociation
 
             (this.MdiParent as frmDBAContainer).AddMDIChildForm(NewLE);
         }
-
-       
-      
     }
 }
